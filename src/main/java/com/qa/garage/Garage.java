@@ -62,22 +62,3 @@ public class Garage {
     }
 }
 
-//List<Vehicle> removeList = new ArrayList<>();
-
-
-        // for (int i = 0; i < myCollection.size(); i++) {
-
-            // if (vehicleType == Car.class) {
-            //     removeList.add(myCollection.get(i));
-            // }
-            
-        //     else if (vehicleType == Motorbike.class) {
-        //         removeList.add(myCollection.get(i));
-        //     }
-            
-        //     else if (vehicleType == Truck.class) {
-        //         it.remove();
-        //         //removeList.add(myCollection.get(i));
-        //     }
-        // }
-        // myCollection.removeAll(removeList);
