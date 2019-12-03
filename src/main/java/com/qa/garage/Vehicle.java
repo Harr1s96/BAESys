@@ -47,7 +47,7 @@ public abstract class Vehicle {
     }
 
     /**
-     * @return the make
+     * @return the make of ther vehicle
      */
     public String getMake() {
         return make;
