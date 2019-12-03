@@ -5,7 +5,6 @@ public abstract class Vehicle {
     private int numberOfWheels;
     private String engineStroke;
     private String make;
-    //private String vehicleType;
 
     public abstract void accelerate();
 
