@@ -25,7 +25,7 @@ public abstract class Vehicle {
     }
 
     /**
-     * @param make the make to set
+     * @param make the make to set the vehicle
      */
     public void setMake(String make) {
         this.make = make;
