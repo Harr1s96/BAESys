@@ -15,9 +15,8 @@ body {
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f5f5f5;
+  background-color:  #60c0f0;
 }
-
 
 .form-signin {
   width: 100%;
@@ -52,4 +51,9 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+/* added styling for personal touch*/
+.btn.btn-lg.btn-primary.btn-block {
+  background-color: darkslateblue;
 }
