@@ -1,5 +1,6 @@
 package com.bae.universalapp.persistence.domain;
 
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -13,6 +14,9 @@ public class Teacher {
 	private Long id;
 	private String firstName;
     private String lastName;
+
+    @OneToMany(mappedBy="teacher")
+    private Set<Module> modules;
 
     public Teacher() {
 
