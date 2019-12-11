@@ -1,4 +1,4 @@
-package com.bae.universalapp.repo;
+package com.bae.universalapp.persistence.domain;
 
 import javax.persistence.Entity;
 
