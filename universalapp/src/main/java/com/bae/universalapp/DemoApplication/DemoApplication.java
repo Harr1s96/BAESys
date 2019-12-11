@@ -1,4 +1,4 @@
-package com.bae.universalapp.App;
+package com.bae.universalapp.DemoApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
