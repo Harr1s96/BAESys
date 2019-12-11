@@ -5,7 +5,7 @@ import java.util.List;
 import com.bae.universalapp.persistence.domain.User;
 import com.bae.universalapp.persistence.repo.UserRepo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,9 +13,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
-
-    @Autowired    
+ 
     private UserRepo userRepo;
+
+    public UserService(UserRepo repo) {
+
+        this.userRepo = repo;
+    }
 
     public User addUser(User user) {
 

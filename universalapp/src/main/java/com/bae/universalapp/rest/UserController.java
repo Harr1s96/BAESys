@@ -7,7 +7,7 @@ import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.User;
 import com.bae.universalapp.service.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,21 +16,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    @Autowired
 	private UserService service;
+
+	public UserController(UserService service) {
+		this.service = service;
+	}
 	
 	@PostMapping("/createUser")
-	public User createUser (@RequestBody User user) {
+	public User addUser(@RequestBody User user) {
 		return this.service.addUser(user);
 	}
 	
 	@GetMapping("/getUsers")
-	public List<User> readUsers() {
+	public List<User> getAllUsers() {
 		return this.service.getAllUsers();
 		
 	}
 	@PutMapping("/updateUser")
-	public User updateUser(@PathParam("id")Long id, @RequestBody User user) {
+	public User updateUserById(@PathParam("id")Long id, @RequestBody User user) {
 		return this.service.updateUserById(user, id);
 		
 	}
