@@ -30,13 +30,19 @@ public class UserController {
 	@GetMapping("/getUsers")
 	public List<User> getAllUsers() {
 		return this.service.getAllUsers();
+	
+	// @GetMapping("/getUserById/{id}")
+	// public User getOneUser(Long id) {
+	// 	return this.service.getUserById(id);
+	// }
 		
 	}
 	@PutMapping("/updateUser")
-	public User updateUserById(@PathParam("id")Long id, @RequestBody User user) {
+	public User updateUserById(@PathParam("id") Long id, @RequestBody User user) {
 		return this.service.updateUserById(user, id);
 		
 	}
+	
 	@DeleteMapping("/deleteUser/{id}")
 	public void deleteUserById(@PathVariable Long id) {
 		this.service.deleteUserById(id);

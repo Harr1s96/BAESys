@@ -1,7 +1,9 @@
-package com.bae.universalapp.DemoApplication;
+package com.bae.universalapp;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class DemoApplication {

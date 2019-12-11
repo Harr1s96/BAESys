@@ -1,12 +1,12 @@
-package com.bae.universalapp.persistence.domain;
+// package com.bae.universalapp.persistence.domain;
 
-import javax.persistence.Entity;
+// //import javax.persistence.Entity;
 
-/**
- * TeacherToModule many to one table
-*/
-@Entity
-public class TeacherToModule {
+// /**
+//  * TeacherToModule many to one table
+// */
+// //@Entity
+// public class TeacherToModule {
 
     
-}
+// }

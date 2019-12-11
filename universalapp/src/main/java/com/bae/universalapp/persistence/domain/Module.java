@@ -1,12 +1,12 @@
-package com.bae.universalapp.persistence.domain;
+// package com.bae.universalapp.persistence.domain;
 
-import javax.persistence.Entity;
+// //import javax.persistence.Entity;
 
-/**
- * Module
- */
-@Entity
-public class Module {
+// /**
+//  * Module
+//  */
+// //@Entity
+// public class Module {
 
     
-}
+// }
