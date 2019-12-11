@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * AppRepo
  */
 @Repository
-public interface AppRepo extends JpaRepository<User, Long> {
+public interface UserRepo extends JpaRepository<User, Long> {
 
     
 }
