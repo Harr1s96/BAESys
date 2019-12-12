@@ -15,10 +15,6 @@ public class Module {
 	private String moduleName;
     private String moduleCode;
 
-    @ManyToOne
-    @JoinColumn
-    private Teacher teacher;
-
     public Module() {
 
     }

@@ -15,7 +15,8 @@ public class Teacher {
 	private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy="teacher")
+    @OneToMany
+    @JoinColumn(name="teacher_id")
     private Set<Module> modules;
 
     public Teacher() {
