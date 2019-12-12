@@ -1,63 +1,63 @@
-// package com.bae.universalapp.service;
+package com.bae.universalapp.service;
 
-// import java.util.List;
+import java.util.List;
 
-// import com.bae.universalapp.persistence.domain.Teacher;
-// import com.bae.universalapp.persistence.repo.TeacherRepo;
+import com.bae.universalapp.persistence.domain.Teacher;
+import com.bae.universalapp.persistence.repo.TeacherRepo;
 
-// import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
 
-// /**
-//  * TeacherService
-//  */
-// @Service
-// public class TeacherService {
+/**
+ * TeacherService
+ */
+@Service
+public class TeacherService {
 
-//     private TeacherRepo teacherRepo;
+    private TeacherRepo teacherRepo;
 
-//     public TeacherService(TeacherRepo repo) {
+    public TeacherService(TeacherRepo repo) {
         
-//         this.teacherRepo = repo;
-//     }
+        this.teacherRepo = repo;
+    }
 
-//     public Teacher addTeacher(Teacher teacher) {
+    public Teacher addTeacher(Teacher teacher) {
         
-//         return this.teacherRepo.save(teacher);  
-//     }
+        return this.teacherRepo.save(teacher);  
+    }
 
-//     public Teacher getTeacherById(Long id) {
+    public Teacher getTeacherById(Long id) {
 
-//         return this.teacherRepo.findById(id).get();
-//     }
+        return this.teacherRepo.findById(id).get();
+    }
 
-//     public List<Teacher> getAllTeachers() {
+    public List<Teacher> getAllTeachers() {
 
-//         return this.teacherRepo.findAll();
-//     }
+        return this.teacherRepo.findAll();
+    }
 
-//     public Teacher updateTeacherById(Teacher teacher, Long id) {
+    public Teacher updateTeacherById(Teacher teacher, Long id) {
 
-//         Teacher toUpdate = this.teacherRepo.findById(id).get();
-//         toUpdate.setFirstName(teacher.getFirstName());
-//         toUpdate.setLastName(teacher.getLastName());
+        Teacher toUpdate = this.teacherRepo.findById(id).get();
+        toUpdate.setFirstName(teacher.getFirstName());
+        toUpdate.setLastName(teacher.getLastName());
 
-//         return toUpdate;
-//     }
+        return toUpdate;
+    }
 
-//     public String deleteTeacherById(Long id) {
+    public String deleteTeacherById(Long id) {
 
-//         this.teacherRepo.deleteById(id);
+        this.teacherRepo.deleteById(id);
 
-//         boolean teacherCheck = this.teacherRepo.existsById(id);
+        boolean teacherCheck = this.teacherRepo.existsById(id);
 
-//         if (teacherCheck) {
-//             return "Teacher has not been deleted";
-//         }
-//         return "Teacher deleted sucessfully";
+        if (teacherCheck) {
+            return "Teacher has not been deleted";
+        }
+        return "Teacher deleted sucessfully";
 
 
-//     }
+    }
 
 
     
-// }
+}
