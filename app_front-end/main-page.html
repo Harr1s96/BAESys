@@ -18,16 +18,33 @@
   <link href="main.css" type="text/css" rel="stylesheet">
 
     <style>
-        
-        .navbar {
-            border-bottom:5px solid #8533ff;
-        }
+
+      .navbar {
+          border-bottom:15px solid #0f0535;
+      }
+
+      .list-group {
+        position: fixed;
+        top: 12%;
+        left: 5%;
+        width: 380px;
+      }
+
+      .list-group h1 {
+        text-align: center;
+        background-color: orange;
+        margin: 0px 0px 0px 0px;
+        padding-top: 3%;
+        padding-bottom: 3%;
+      }
     
     </style>
 
 </head>
 
 <body>
+
+  <!-- <div class="main-body"> -->
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
@@ -44,7 +61,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            
+              <li class="nav-item active">
                 <a class="nav-link" href="#">My Profile
                 <span class="sr-only">(current)</span>
                 </a>
@@ -55,19 +73,25 @@
             </li>
 
             </ul>
+        
         </div>
+    
     </div>
+  
   </nav>
 
-  <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">
-      Cras justo odio
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
-  </div>
+    <ul class="list-group">
+      <h1>Lecturers</h1>
+      <li class="list-group-item list-group-item-action">Dr. Who</li>
+      <li class="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
+      <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+      <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+      <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+      <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+    </ul>
 
   <!-- Page Content -->
   <!--<div class="container">
@@ -82,6 +106,8 @@
       </div>
     </div>
   </div>-->
+
+  <!-- </div> -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.slim.min.js"></script>
