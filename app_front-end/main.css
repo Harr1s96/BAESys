@@ -1,7 +1,7 @@
 
 body {
-  /* background-image: url("https://source.unsplash.com/photos/3THn0EN_Ydo/1920x1080"); */
-  background-image: url('https://images.unsplash.com/photo-1572191783453-62f99a6055ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80/1920x1080'); 
+  background-image: 
+    url('https://source.unsplash.com/3THn0EN_Ydo/1920x1080'); 
   /* background-color: #66e0ff; */
 }
 
