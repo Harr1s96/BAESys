@@ -15,10 +15,11 @@ body {
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color:  #60c0f0;
+  background-color: #60c0f0;
 }
 
 .form-signin {
+  box-shadow: 12px 12px 12px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -62,7 +63,6 @@ body {
 
 #sign-in-intro {
   text-align: center;
-
 }
 
 .h3.mb-3.font-weight-normal {
