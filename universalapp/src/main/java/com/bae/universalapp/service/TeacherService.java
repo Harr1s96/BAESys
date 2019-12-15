@@ -55,9 +55,6 @@ public class TeacherService {
         }
         return "Teacher deleted sucessfully";
 
-
     }
-
-
-    
+ 
 }
