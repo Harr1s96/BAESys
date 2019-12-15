@@ -15,7 +15,8 @@ public class Teacher {
 	private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="teacher_id")
     private List<Module> modules;
 
     public Teacher() {

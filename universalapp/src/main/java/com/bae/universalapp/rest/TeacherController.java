@@ -1,11 +1,11 @@
 package com.bae.universalapp.rest;
 
-// import java.util.Arrays;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
 
-// import com.bae.universalapp.persistence.domain.Module;
+import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.service.TeacherService;
 
@@ -25,13 +25,13 @@ public class TeacherController {
 	}
 
     @PostMapping("/teacher")
-	public Teacher addTeacher(@RequestBody Teacher teacher) {
+	public Teacher addTeacher(@RequestBody Teacher teacher, Module module) {
 
 		// Module myModule = new Module();
 		// myModule.setModuleCode("CHEM 333");
 		// myModule.setModuleName("Further Organic Chemistry");
 		
-		// teacher.setModules(Arrays.asList(module));
+		teacher.setModules(Arrays.asList(module));
 		return this.service.addTeacher(teacher);
 	}
 	
