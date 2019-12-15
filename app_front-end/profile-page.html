@@ -28,55 +28,8 @@
     <!-- custom internal css for personal touch -->
     <link href="main.css" type="text/css" rel="stylesheet" />
 
-    <style>
-      .card {
-        box-shadow: 12px 12px 12px 0 rgba(0, 0, 0, 0.2);
-        width: 450px;
-        height: 390px;
-        text-align: center;
-        font-family: arial;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+    <link href="profile.css" type="text/css" rel="stylesheet"> 
 
-      .material-icons {
-        font-size: 150px;
-      }
-
-      .title {
-        color: grey;
-        font-size: 18px;
-      }
-
-      button {
-        border: none;
-        outline: 0;
-        display: inline-block;
-        padding: 8px;
-        color: white;
-        background-color: darkslateblue;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-size: 18px;
-        position: relative;
-        top: 80px;
-        height: 60px;
-      }
-
-      .card a {
-        text-decoration: none;
-        font-size: 22px;
-        color: black;
-      }
-
-      button:hover,
-      a:hover {
-        opacity: 0.7;
-      }
-    </style>
   </head>
 
   <body>
@@ -112,14 +65,22 @@
     </nav>
 
     <div class="card">
-      <!-- <img src="https://img.icons8.com/ios/250/000000/user.png" /> -->
+
       <i class="material-icons">person</i>
-      <h4>Username</h4>
-      <p class="title">
-        <i class="fa fa-envelope"></i>
-        emailaddress@email.com
-      </p>
-      <p><button>Change Password</button></p>
+      
+      <div id="details">
+        
+        <h4>Username</h4>
+        <p class="title">
+          <i class="fa fa-envelope"></i>
+          emailaddress@email.com
+        </p>
+      
+      </div>
+      
+      <button>Change Password</button>
+    
     </div>
+  
   </body>
 </html>
