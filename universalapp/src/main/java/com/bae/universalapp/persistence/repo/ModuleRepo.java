@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * ModuleRepo
 */
 @Repository
-public interface ModuleRepo  extends JpaRepository<Module, Long> {
+public interface ModuleRepo extends JpaRepository<Module, Long> {
 
     
 }

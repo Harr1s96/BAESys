@@ -20,8 +20,8 @@ public class TeacherService {
         this.teacherRepo = repo;
     }
 
-    public Teacher addTeacher(Teacher teacher) {
-        
+    public Teacher addTeacher(Teacher teacher)  {
+
         return this.teacherRepo.save(teacher);  
     }
 

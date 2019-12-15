@@ -1,9 +1,15 @@
 package com.bae.universalapp.rest;
 
 import com.bae.universalapp.service.ModuleService;
+
 import java.util.List;
+
 import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.Module;
+import com.bae.universalapp.persistence.repo.TeacherRepo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,14 +23,23 @@ public class ModuleController {
 
     public ModuleController(ModuleService service) {
         this.service = service;
-    }
-
-    @PostMapping("/createModule")
-	public Module addModule(@RequestBody Module teacher) {
-		return this.service.addModule(teacher);
 	}
 	
-	@GetMapping("/getModules")
+	@Autowired
+	private TeacherRepo teacherRepo;
+
+    @PostMapping("/teachers/{teacherId}/modules")
+	public Module addModule(@PathVariable(value="teacherId") Long id, 
+							@RequestBody Module module) throws ResourceNotFoundException {
+		
+		return this.teacherRepo.findById(id)
+			.map(teacher -> {module.setTeacher(teacher);
+			return this.service.addModule(module);})
+			.orElseThrow(() -> new ResourceNotFoundException("instructor not found"));
+		//return this.service.addModule(module);
+	}
+	
+	@GetMapping("/teachers/modules")
 	public List<Module> getAllModules() {
 		return this.service.getAllModules();
 	

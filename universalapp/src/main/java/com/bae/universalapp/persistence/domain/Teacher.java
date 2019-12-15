@@ -1,6 +1,6 @@
 package com.bae.universalapp.persistence.domain;
 
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -15,13 +15,27 @@ public class Teacher {
 	private String firstName;
     private String lastName;
 
-    @OneToMany
-    @JoinColumn(name="teacher_id")
-    private Set<Module> modules;
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Module> modules;
 
     public Teacher() {
 
     }
+
+    /**
+     * @param modules the modules to set
+     */
+    public void setModules(List<Module> modules) {
+        this.modules = modules;
+    }
+
+    /**
+     * @return the modules
+     */
+    public List<Module> getModules() {
+        return modules;
+    }
+
 
     /**
      * @param id the id to set

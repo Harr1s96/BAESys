@@ -10,10 +10,14 @@ import javax.persistence.*;
 public class Module {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String moduleName;
     private String moduleCode;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 
     public Module() {
 
@@ -59,6 +63,20 @@ public class Module {
      */
     public String getModuleCode() {
         return moduleCode;
+    }
+
+    /**
+     * @param teacher the teacher to set
+     */
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    /**
+     * @return the teacher
+     */
+    public Teacher getTeacher() {
+        return teacher;
     }
 
 }
