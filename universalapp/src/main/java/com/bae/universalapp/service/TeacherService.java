@@ -2,7 +2,7 @@ package com.bae.universalapp.service;
 
 import java.util.List;
 
-import com.bae.universalapp.persistence.domain.Module;
+//import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.persistence.repo.TeacherRepo;
 
@@ -20,8 +20,6 @@ public class TeacherService {
 
         this.teacherRepo = repo;
     }
-
-    // public List<Module> setModulesForTeacher(List)
 
     public Teacher addTeacher(Teacher teacher) {
 

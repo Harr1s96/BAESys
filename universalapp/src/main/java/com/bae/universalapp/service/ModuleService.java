@@ -20,6 +20,11 @@ public class ModuleService {
         this.moduleRepo = repo;
     }
 
+    public List<Module> addModuleList(ModuleListWrapper modules) {
+        
+        return this.moduleRepo.saveAll(modules);
+    }
+
     public Module addModule(Module module) {
         
         return this.moduleRepo.save(module);  

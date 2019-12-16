@@ -15,7 +15,7 @@ public class Module {
     private String moduleName;
     private String moduleCode;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 

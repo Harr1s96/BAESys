@@ -2,7 +2,6 @@ package com.bae.universalapp.rest;
 
 import java.util.List;
 import javax.websocket.server.PathParam;
-import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.service.TeacherService;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,6 @@ public class TeacherController {
 		// myModule.setModuleName(module.getModuleName());
 		// teacher.setModules(Arrays.asList(myModule));
 
-		teacher.setModules(teacher);
 		return this.service.addTeacher(teacher);
 	}
 

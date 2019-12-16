@@ -16,17 +16,16 @@ public class Teacher {
     private String firstName;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Module> modules = new ArrayList<>();
 
     public Teacher() {
 
     }
 
-    public Teacher(String firstName, String lastName, List<Module> modules) {
+    public Teacher(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.modules = modules;
     }
 
     /**
