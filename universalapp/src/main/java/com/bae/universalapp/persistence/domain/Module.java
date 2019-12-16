@@ -10,13 +10,36 @@ import javax.persistence.*;
 public class Module {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String moduleName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String moduleName;
     private String moduleCode;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 
     public Module() {
 
+    }
+
+    public Module(String moduleName, String moduleCode) {
+        this.moduleName = moduleName;
+        this.moduleCode = moduleCode;
+    }
+
+    /**
+     * @param teacher the teacher to set
+     */
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    /**
+     * @return the teacher
+     */
+    public Teacher getTeacher() {
+        return teacher;
     }
 
     /**

@@ -2,6 +2,7 @@ package com.bae.universalapp.service;
 
 import java.util.List;
 
+import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.persistence.repo.TeacherRepo;
 
@@ -16,13 +17,15 @@ public class TeacherService {
     private TeacherRepo teacherRepo;
 
     public TeacherService(TeacherRepo repo) {
-        
+
         this.teacherRepo = repo;
     }
 
-    public Teacher addTeacher(Teacher teacher)  {
+    // public List<Module> setModulesForTeacher(List)
 
-        return this.teacherRepo.save(teacher);  
+    public Teacher addTeacher(Teacher teacher) {
+
+        return this.teacherRepo.save(teacher);
     }
 
     public Teacher getTeacherById(Long id) {
@@ -56,5 +59,5 @@ public class TeacherService {
         return "Teacher deleted sucessfully";
 
     }
- 
+
 }

@@ -1,5 +1,6 @@
 package com.bae.universalapp.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -10,17 +11,22 @@ import javax.persistence.*;
 public class Teacher {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String firstName;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String firstName;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="teacher_id")
-    private List<Module> modules;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Module> modules = new ArrayList<>();
 
     public Teacher() {
 
+    }
+
+    public Teacher(String firstName, String lastName, List<Module> modules) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.modules = modules;
     }
 
     /**
@@ -36,7 +42,6 @@ public class Teacher {
     public List<Module> getModules() {
         return modules;
     }
-
 
     /**
      * @param id the id to set
@@ -80,5 +85,4 @@ public class Teacher {
         return lastName;
     }
 
-    
 }
