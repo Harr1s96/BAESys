@@ -1,6 +1,9 @@
 package com.bae.universalapp.persistence.domain;
 
 import javax.persistence.Entity;
+
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -15,9 +18,9 @@ public class Module {
     private String moduleName;
     private String moduleCode;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+    @OneToMany
+    @JoinColumn(name = "module_id")
+    private List<Lecture> lectures;
 
     public Module() {
 
@@ -26,20 +29,6 @@ public class Module {
     public Module(String moduleName, String moduleCode) {
         this.moduleName = moduleName;
         this.moduleCode = moduleCode;
-    }
-
-    /**
-     * @param teacher the teacher to set
-     */
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    /**
-     * @return the teacher
-     */
-    public Teacher getTeacher() {
-        return teacher;
     }
 
     /**

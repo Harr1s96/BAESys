@@ -16,18 +16,18 @@ public class ModuleService {
     private ModuleRepo moduleRepo;
 
     public ModuleService(ModuleRepo repo) {
-        
+
         this.moduleRepo = repo;
     }
 
-    public List<Module> addModuleList(ModuleListWrapper modules) {
-        
-        return this.moduleRepo.saveAll(modules);
-    }
+    // public List<Module> addModuleList(ModuleListWrapper modules) {
+
+    // return this.moduleRepo.saveAll(modules);
+    // }
 
     public Module addModule(Module module) {
-        
-        return this.moduleRepo.save(module);  
+
+        return this.moduleRepo.save(module);
     }
 
     public Module getModuleById(Long id) {
@@ -60,8 +60,6 @@ public class ModuleService {
         }
         return "Module deleted sucessfully";
 
-
     }
 
-    
 }

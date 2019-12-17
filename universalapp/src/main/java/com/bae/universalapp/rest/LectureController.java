@@ -1,61 +1,71 @@
-// package com.bae.universalapp.rest;
+package com.bae.universalapp.rest;
 
-// import java.util.Arrays;
-// import java.util.List;
+import java.util.List;
+import javax.websocket.server.PathParam;
 
-// import javax.websocket.server.PathParam;
+import com.bae.universalapp.persistence.domain.Lecture;
+import com.bae.universalapp.persistence.domain.Module;
+import com.bae.universalapp.persistence.repo.ModuleRepo;
+import com.bae.universalapp.service.LectureService;
 
-// import com.bae.universalapp.persistence.domain.Lecture;
-// import com.bae.universalapp.persistence.domain.Module;
-// import com.bae.universalapp.service.LectureService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.web.bind.annotation.*;
 
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.*;
+/**
+ * LectureController
+ */
+@RestController
+public class LectureController {
 
-// /**
-// * LectureController
-// */
-// @RestController
-// public class LectureController {
+    private LectureService service;
 
-// private LectureService service;
+    public LectureController(LectureService service) {
+        this.service = service;
+    }
 
-// public LectureController(LectureService service) {
-// this.service = service;
-// }
+    @Autowired
+    private ModuleRepo moduleRepo;
 
-// @PostMapping("/lecture")
-// public Lecture addLecture(@RequestBody Lecture lecture, Module module) {
+    @PostMapping("/module/{moduleId}/lectures")
+    public Lecture addLecture(@PathVariable(value="moduleId") Long id, @RequestBody Lecture lecture)
+    throws ResourceNotFoundException {
 
-// // Module myModule = new Module();
-// // myModule.setModuleCode("CHEM 333");
-// // myModule.setModuleName("Further Organic Chemistry");
+        try {
+		Module module = this.moduleRepo.findById(id).get();
+		lecture.setModule(module);
+		} catch (ResourceNotFoundException e) {
+		e.printStackTrace();
+		}
 
-// lecture.setModules(Arrays.asList(module));
-// return this.service.addLecture(lecture);
-// }
+        // Module myModule = new Module();
+        // myModule.setModuleCode("CHEM 333");
+        // myModule.setModuleName("Further Organic Chemistry");
 
-// @GetMapping("/lecture")
-// public List<Lecture> getAllLectures() {
-// return this.service.getAllLectures();
-// }
+        return this.service.addLecture(lecture);
+    }
 
-// @GetMapping("/lecture/{id}")
-// public Lecture getOneLecture(@PathVariable(value="id") Long id) {
+    @GetMapping("/lecture")
+    public List<Lecture> getAllLectures() {
+        return this.service.getAllLectures();
+    }
 
-// return this.service.getLectureById(id);
-// }
+    @GetMapping("/lecture/{id}")
+    public Lecture getOneLecture(@PathVariable(value = "id") Long id) {
 
-// @PutMapping("/lecture")
-// public Lecture updateTeacherById(@PathParam("id") Long id, @RequestBody
-// Lecture lecture) {
-// return this.service.updateLectureById(lecture, id);
+        return this.service.getLectureById(id);
+    }
 
-// }
+    @PutMapping("/lecture")
+    public Lecture updateTeacherById(@PathParam("id") Long id, @RequestBody Lecture lecture) {
+        return this.service.updateLectureById(lecture, id);
 
-// @DeleteMapping("/lecture/{id}")
-// public void deleteLectureById(@PathVariable Long id) {
-// this.service.deleteLectureById(id);
-// }
+    }
 
-// }
+    @DeleteMapping("/lecture/{id}")
+    public void deleteLectureById(@PathVariable Long id) {
+        this.service.deleteLectureById(id);
+    }
+
+}

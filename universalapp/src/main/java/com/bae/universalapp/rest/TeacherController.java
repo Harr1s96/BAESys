@@ -22,11 +22,6 @@ public class TeacherController {
 	@PostMapping("/teacher")
 	public Teacher addTeacher(@RequestBody Teacher teacher) {
 
-		// Module myModule = new Module();
-		// myModule.setModuleCode(module.getModuleCode());
-		// myModule.setModuleName(module.getModuleName());
-		// teacher.setModules(Arrays.asList(myModule));
-
 		return this.service.addTeacher(teacher);
 	}
 

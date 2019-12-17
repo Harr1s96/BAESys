@@ -1,6 +1,5 @@
 package com.bae.universalapp.persistence.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -17,7 +16,8 @@ public class Teacher {
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Module> modules = new ArrayList<>();
+    @JoinColumn(name = "teacher_id")
+    private List<Module> modules;
 
     public Teacher() {
 
