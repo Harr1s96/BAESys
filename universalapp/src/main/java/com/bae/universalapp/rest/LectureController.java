@@ -29,20 +29,10 @@ public class LectureController {
     private ModuleRepo moduleRepo;
 
     @PostMapping("/module/{moduleId}/lectures")
-    public Lecture addLecture(@PathVariable(value="moduleId") Long id, @RequestBody Lecture lecture)
-    throws ResourceNotFoundException {
+    public Lecture addLecture(@PathVariable(value = "moduleId") Long id, @RequestBody Lecture lecture) {
 
-        try {
-		Module module = this.moduleRepo.findById(id).get();
-		lecture.setModule(module);
-		} catch (ResourceNotFoundException e) {
-		e.printStackTrace();
-		}
-
-        // Module myModule = new Module();
-        // myModule.setModuleCode("CHEM 333");
-        // myModule.setModuleName("Further Organic Chemistry");
-
+        Module module = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+        lecture.setModule(module);
         return this.service.addLecture(lecture);
     }
 

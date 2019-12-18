@@ -6,8 +6,6 @@ import javax.persistence.*;
 
 import javax.persistence.Id;
 
-//import javax.persistence.Entity;
-
 /**
  * Lecture
  */

@@ -5,50 +5,51 @@ import java.util.List;
 import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.repo.LectureRepo;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
-* LectureService
-*/
+ * LectureService
+ */
 @Service
 public class LectureService {
 
-private LectureRepo lectureRepo;
+    private LectureRepo lectureRepo;
 
-public LectureService(LectureRepo repo) {
-this.lectureRepo = repo;
-}
+    public LectureService(LectureRepo repo) {
+        this.lectureRepo = repo;
+    }
 
-public Lecture addLecture(Lecture lecture) {
-return this.lectureRepo.save(lecture);
+    public Lecture addLecture(Lecture lecture) {
+        return this.lectureRepo.save(lecture);
 
-}
+    }
 
-public Lecture getLectureById(Long id) {
-return this.lectureRepo.findById(id).get();
-}
+    public Lecture getLectureById(Long id) {
+        return this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+    }
 
-public List<Lecture> getAllLectures() {
-return this.lectureRepo.findAll();
-}
+    public List<Lecture> getAllLectures() {
+        return this.lectureRepo.findAll();
+    }
 
-public Lecture updateLectureById(Lecture Lecture, Long id) {
-    
-Lecture toUpdate = this.lectureRepo.findById(id).get();
-toUpdate.setLectureName(Lecture.getLectureName());
+    public Lecture updateLectureById(Lecture lecture, Long id) {
 
-return toUpdate;
-}
+        Lecture toUpdate = this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+        toUpdate.setLectureName(lecture.getLectureName());
 
-public String deleteLectureById(Long id) {
+        return toUpdate;
+    }
 
-this.lectureRepo.deleteById(id);
+    public String deleteLectureById(Long id) {
 
-boolean LectureCheck = this.lectureRepo.existsById(id);
+        this.lectureRepo.deleteById(id);
 
-if (LectureCheck) {
-return "Lecture has not been deleted";
-}
-return "Lecture deleted sucessfully";
-}
+        boolean lectureCheck = this.lectureRepo.existsById(id);
+
+        if (lectureCheck) {
+            return "Lecture has not been deleted";
+        }
+        return "Lecture deleted sucessfully";
+    }
 }

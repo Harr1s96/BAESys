@@ -5,6 +5,7 @@ import java.util.List;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.persistence.repo.TeacherRepo;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +28,7 @@ public class TeacherService {
 
     public Teacher getTeacherById(Long id) {
 
-        return this.teacherRepo.findById(id).get();
+        return this.teacherRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     public List<Teacher> getAllTeachers() {
@@ -37,7 +38,7 @@ public class TeacherService {
 
     public Teacher updateTeacherById(Teacher teacher, Long id) {
 
-        Teacher toUpdate = this.teacherRepo.findById(id).get();
+        Teacher toUpdate = this.teacherRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setFirstName(teacher.getFirstName());
         toUpdate.setLastName(teacher.getLastName());
 

@@ -1,6 +1,5 @@
 package com.bae.universalapp.rest;
 
-// import com.bae.universalapp.service.ModuleListWrapper;
 import com.bae.universalapp.service.ModuleService;
 import java.util.List;
 import javax.websocket.server.PathParam;
@@ -20,45 +19,15 @@ public class ModuleController {
 		this.service = service;
 	}
 
-	// @Autowired
-	// private TeacherRepo teacherRepo;
-
 	@PostMapping("/teachers/modules")
 	public Module addModule(@RequestBody Module module) {
 
-		// try {
-		// Teacher myTeacher = this.teacherRepo.findById(id).get();
-		// module.setTeacher(myTeacher);
-		// } catch (ResourceNotFoundException e) {
-		// e.printStackTrace();
-		// }
 		return this.service.addModule(module);
 	}
-
-	// @PostMapping("teacher/{teacherId}/modules")
-	// public List<Module> addModuleList(@PathVariable(value = "teacherId") Long id,
-	// @RequestBody ModuleListWrapper modules)
-	// throws ResourceNotFoundException {
-
-	// Module module = new Module();
-
-	// try {
-	// Teacher myTeacher = this.teacherRepo.findById(id).get();
-	// module.setTeacher(myTeacher);
-	// } catch (ResourceNotFoundException e) {
-	// e.printStackTrace();
-	// }
-	// return this.service.addModuleList(modules);
-	// }
 
 	@GetMapping("/teachers/modules")
 	public List<Module> getAllModules() {
 		return this.service.getAllModules();
-
-		// @GetMapping("/getModuleById/{id}")
-		// public Module getOneModule(Long id) {
-		// return this.service.getModuleById(id);
-		// }
 
 	}
 

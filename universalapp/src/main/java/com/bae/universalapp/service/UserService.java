@@ -5,7 +5,7 @@ import java.util.List;
 import com.bae.universalapp.persistence.domain.User;
 import com.bae.universalapp.persistence.repo.UserRepo;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
- 
+
     private UserRepo userRepo;
 
     public UserService(UserRepo repo) {
@@ -28,7 +28,7 @@ public class UserService {
 
     public User getUserById(Long id) {
 
-        return this.userRepo.findById(id).get();
+        return this.userRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     public List<User> getAllUsers() {
@@ -38,7 +38,7 @@ public class UserService {
 
     public User updateUserById(User user, Long id) {
 
-        User toUpdate = this.userRepo.findById(id).get();
+        User toUpdate = this.userRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setEmail(user.getEmail());
         toUpdate.setPassword(user.getPassword());
 
@@ -52,13 +52,10 @@ public class UserService {
         boolean userCheck = this.userRepo.existsById(id);
 
         if (userCheck) {
-            String message = "User has not been deleted";
-            return message;
+            return "User has not been deleted";
         }
         return "User deleted sucessfully";
 
-
     }
 
-    
 }

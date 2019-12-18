@@ -5,6 +5,7 @@ import java.util.List;
 import com.bae.universalapp.persistence.repo.ModuleRepo;
 import com.bae.universalapp.persistence.domain.Module;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,10 +21,6 @@ public class ModuleService {
         this.moduleRepo = repo;
     }
 
-    // public List<Module> addModuleList(ModuleListWrapper modules) {
-
-    // return this.moduleRepo.saveAll(modules);
-    // }
 
     public Module addModule(Module module) {
 
@@ -32,7 +29,7 @@ public class ModuleService {
 
     public Module getModuleById(Long id) {
 
-        return this.moduleRepo.findById(id).get();
+        return this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     public List<Module> getAllModules() {
@@ -42,7 +39,7 @@ public class ModuleService {
 
     public Module updateModuleById(Module module, Long id) {
 
-        Module toUpdate = this.moduleRepo.findById(id).get();
+        Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setModuleName(module.getModuleName());
         toUpdate.setModuleCode(module.getModuleCode());
 
