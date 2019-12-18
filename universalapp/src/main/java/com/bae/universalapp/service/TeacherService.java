@@ -21,8 +21,11 @@ public class TeacherService {
         this.teacherRepo = repo;
     }
 
-    public Teacher addTeacher(Teacher teacher) {
+    public Teacher addTeacher(Teacher teacher) throws EmptyModuleListException {
 
+        if (teacher.getModules().isEmpty()) {
+            throw new EmptyModuleListException();
+        }
         return this.teacherRepo.save(teacher);
     }
 

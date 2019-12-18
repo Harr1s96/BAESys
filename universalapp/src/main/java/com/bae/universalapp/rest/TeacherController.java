@@ -3,6 +3,7 @@ package com.bae.universalapp.rest;
 import java.util.List;
 import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.Teacher;
+import com.bae.universalapp.service.EmptyModuleListException;
 import com.bae.universalapp.service.TeacherService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class TeacherController {
 	}
 
 	@PostMapping("/teacher")
-	public Teacher addTeacher(@RequestBody Teacher teacher) {
+	public Teacher addTeacher(@RequestBody Teacher teacher) throws EmptyModuleListException {
 
 		return this.service.addTeacher(teacher);
 	}

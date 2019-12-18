@@ -6,6 +6,7 @@ import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.repo.ModuleRepo;
+// import com.bae.universalapp.service.LectureListWrapper;
 import com.bae.universalapp.service.LectureService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,13 @@ public class LectureController {
         Module module = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         lecture.setModule(module);
         return this.service.addLecture(lecture);
+    }
+
+    @PostMapping("/module/{moduleId}lectures")
+    public List<Lecture> addLectureList(@PathVariable(value = "moduleId") Long id,
+            @RequestBody List<Lecture> lectureList) {
+
+        return this.service.addLectureList(lectureList);
     }
 
     @GetMapping("/lecture")
