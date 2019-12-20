@@ -21,7 +21,6 @@ public class ModuleService {
         this.moduleRepo = repo;
     }
 
-
     public Module addModule(Module module) {
 
         return this.moduleRepo.save(module);
@@ -56,6 +55,22 @@ public class ModuleService {
             return "Module has not been deleted";
         }
         return "Module deleted sucessfully";
+
+    }
+
+    public boolean verifyModuleCode(List<Module> moduleList) throws InvalidModuleCodeException {
+
+        boolean verified = false;
+
+        for (Module m : moduleList) {
+
+            if (m.getModuleCode().matches("CHEM\\s\\d{3}")) {
+                verified = true;
+            } else {
+                throw new InvalidModuleCodeException();
+            }
+        }
+        return verified;
 
     }
 

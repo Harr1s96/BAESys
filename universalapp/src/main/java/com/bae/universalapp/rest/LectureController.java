@@ -6,7 +6,6 @@ import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.repo.ModuleRepo;
-// import com.bae.universalapp.service.LectureListWrapper;
 import com.bae.universalapp.service.LectureService;
 
 import org.springframework.web.bind.annotation.PostMapping;

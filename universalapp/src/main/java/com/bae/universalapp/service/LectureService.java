@@ -57,4 +57,5 @@ public class LectureService {
         }
         return "Lecture deleted sucessfully";
     }
+
 }
