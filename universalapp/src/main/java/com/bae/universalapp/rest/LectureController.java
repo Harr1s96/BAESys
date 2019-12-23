@@ -36,12 +36,12 @@ public class LectureController {
         return this.service.addLecture(lecture);
     }
 
-    @PostMapping("/module/{moduleId}lectures")
-    public List<Lecture> addLectureList(@PathVariable(value = "moduleId") Long id,
-            @RequestBody List<Lecture> lectureList) {
-
-        return this.service.addLectureList(lectureList);
-    }
+    // @PostMapping("/module/{moduleId}lectures")
+    // public List<Lecture> addLectureList(@PathVariable(value = "moduleId") Long id,
+    //         @RequestBody List<Lecture> lectureList) {
+        
+    //     return this.service.addLectureList(lectureList);
+    // }
 
     @GetMapping("/lecture")
     public List<Lecture> getAllLectures() {

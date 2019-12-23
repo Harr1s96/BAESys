@@ -58,15 +58,20 @@ public class ModuleService {
 
     }
 
-    public boolean verifyModuleCode(List<Module> moduleList) throws InvalidModuleCodeException {
+    public boolean verifyModuleCode(List<Module> moduleList) throws InvalidModuleCodeException, EmptyModuleListException {
 
         boolean verified = false;
+
+        if (moduleList == null || moduleList.isEmpty()) {
+            throw new EmptyModuleListException();
+        }
 
         for (Module m : moduleList) {
 
             if (m.getModuleCode().matches("CHEM\\s\\d{3}")) {
                 verified = true;
-            } else {
+            } 
+            else {
                 throw new InvalidModuleCodeException();
             }
         }

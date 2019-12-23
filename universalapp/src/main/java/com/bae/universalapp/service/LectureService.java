@@ -25,10 +25,10 @@ public class LectureService {
 
     }
 
-    public List<Lecture> addLectureList(List<Lecture> lectureList) {
+    // public List<Lecture> addLectureList(List<Lecture> lectureList) {
 
-        return this.lectureRepo.saveAll(lectureList);
-    }
+    //     return this.lectureRepo.saveAll(lectureList);
+    // }
 
     public Lecture getLectureById(Long id) {
         return this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
