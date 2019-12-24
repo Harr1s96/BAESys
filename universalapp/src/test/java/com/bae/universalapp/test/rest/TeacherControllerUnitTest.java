@@ -90,20 +90,20 @@ public class TeacherControllerUnitTest {
     @Test
     public void updateUserByIdTest() {
 
-        Teacher updatedUser = new Teacher("jongeorgiou@coldmail.com", "pass123");
+        Teacher updateTeacher = new Teacher("Liam", "McIvor");
 
         when(this.teacherService.getTeacherById(id))
         .thenReturn(testTeacherWithId);
 
         assertEquals(testTeacherWithId, this.teacherController.getTeacherById(id));
 
-        when(this.teacherService.updateTeacherById(updatedUser, id))
-        .thenReturn(updatedUser);
+        when(this.teacherService.updateTeacherById(updateTeacher, id))
+        .thenReturn(updateTeacher);
 
-        assertEquals(updatedUser, this.teacherController.updateTeacherById(id, updatedUser));
+        assertEquals(updateTeacher, this.teacherController.updateTeacherById(id, updateTeacher));
 
         verify(this.teacherService, times(1)).getTeacherById(id);
-        verify(this.teacherService, times(1)).updateTeacherById(updatedUser, id);
+        verify(this.teacherService, times(1)).updateTeacherById(updateTeacher, id);
     }
 
     @Test
