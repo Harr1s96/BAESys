@@ -43,7 +43,7 @@ public class LectureService {
         Lecture toUpdate = this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setLectureName(lecture.getLectureName());
 
-        return toUpdate;
+        return this.lectureRepo.save(toUpdate);
     }
 
     public String deleteLectureById(Long id) {

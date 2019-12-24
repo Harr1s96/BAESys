@@ -1,6 +1,5 @@
 package com.bae.universalapp.test.service;
 
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -51,7 +50,7 @@ public class ModuleServiceUnitTest {
     }
 
     @Test
-    public void addTeacherTest() {
+    public void addModuleTest() {
         
         when(this.moduleRepo.save(testModule))
         .thenReturn(testModule);
@@ -62,7 +61,7 @@ public class ModuleServiceUnitTest {
     }
 
     @Test
-    public void getTeacherByIdTest() {
+    public void getModuleByIdTest() {
 
         when(this.moduleRepo.findById(this.id))
         .thenReturn(Optional.of(this.testModuleWithId));
@@ -73,7 +72,7 @@ public class ModuleServiceUnitTest {
     }
 
     @Test
-    public void getAllTeachersTest() {
+    public void getAllModulesTest() {
 
         when(this.moduleRepo.findAll())
         .thenReturn(this.moduleList);
@@ -84,7 +83,7 @@ public class ModuleServiceUnitTest {
     }
 
     @Test
-    public void updateTeacherByIdTest() {
+    public void updateModuleByIdTest() {
 
         Module updatedModule = new Module("Statistical Thermodynamics", "CHEM 336");
 
@@ -104,7 +103,7 @@ public class ModuleServiceUnitTest {
     }
 
     @Test
-    public void deleteTeacherByIdTest() {
+    public void deleteModuleByIdTest() {
         
         when(this.moduleRepo.existsById(id))
         .thenReturn(true);
