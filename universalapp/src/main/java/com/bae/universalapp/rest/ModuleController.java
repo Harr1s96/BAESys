@@ -31,6 +31,11 @@ public class ModuleController {
 
 	}
 
+	@GetMapping("/teachers/modules/{moduleId}")
+	public Module getModuleById(@PathVariable Long id) {
+		return this.service.getModuleById(id);
+	}
+
 	@PutMapping("/updateModule")
 	public Module updateModuleById(@PathParam("id") Long id, @RequestBody Module teacher) {
 		return this.service.updateModuleById(teacher, id);
@@ -38,8 +43,8 @@ public class ModuleController {
 	}
 
 	@DeleteMapping("/deleteModule/{id}")
-	public void deleteModuleById(@PathVariable Long id) {
-		this.service.deleteModuleById(id);
+	public String deleteModuleById(@PathVariable Long id) {
+		return this.service.deleteModuleById(id);
 	}
 
 }
