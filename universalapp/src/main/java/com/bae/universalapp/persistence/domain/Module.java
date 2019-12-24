@@ -32,6 +32,20 @@ public class Module {
     }
 
     /**
+     * @param lectures the lectures to set
+     */
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
+
+    /**
+     * @return the lectures
+     */
+    public List<Lecture> getLectures() {
+        return lectures;
+    }
+
+    /**
      * @param id the id to set
      */
     public void setId(Long id) {

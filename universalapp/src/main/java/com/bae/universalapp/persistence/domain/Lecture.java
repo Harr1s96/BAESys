@@ -18,8 +18,8 @@ public class Lecture {
 
     private String lectureName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Module module;
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // private Module module;
 
     public Lecture() {
 
@@ -32,16 +32,16 @@ public class Lecture {
     /**
      * @param module the module to set
      */
-    public void setModule(Module module) {
-        this.module = module;
-    }
+    // public void setModule(Module module) {
+    //     this.module = module;
+    // }
 
     /**
      * @return the module
      */
-    public Module getModule() {
-        return module;
-    }
+    // public Module getModule() {
+    //     return module;
+    // }
 
     /**
      * @param id the id to set

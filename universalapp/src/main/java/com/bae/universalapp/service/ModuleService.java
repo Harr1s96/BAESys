@@ -3,6 +3,7 @@ package com.bae.universalapp.service;
 import java.util.List;
 
 import com.bae.universalapp.persistence.repo.ModuleRepo;
+import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.domain.Module;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -45,6 +46,14 @@ public class ModuleService {
         return this.moduleRepo.save(toUpdate);
     }
 
+    public List<Lecture> updateLecturesByModuleId(Long id, List<Lecture> lectureList) {
+        
+        Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+        toUpdate.setLectures(lectureList);
+
+        return lectureList;
+    }
+
     public String deleteModuleById(Long id) {
 
         this.moduleRepo.deleteById(id);
@@ -78,5 +87,18 @@ public class ModuleService {
         return verified;
 
     }
+
+	public boolean verifyModuleCode(Module module) {
+
+        boolean verified = false;
+
+        if (module.getModuleCode().matches("CHEM\\s\\d{3}")) {
+            verified = true;
+        }
+        else {
+            throw new InvalidModuleCodeException();
+        }
+        return verified;
+	}
 
 }

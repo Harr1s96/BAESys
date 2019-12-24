@@ -9,7 +9,6 @@ import com.bae.universalapp.persistence.repo.ModuleRepo;
 import com.bae.universalapp.service.LectureService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,19 +19,17 @@ import org.springframework.web.bind.annotation.*;
 public class LectureController {
 
     private LectureService service;
+    // private ModuleRepo moduleRepo;
 
     public LectureController(LectureService service) {
         this.service = service;
     }
 
-    @Autowired
-    private ModuleRepo moduleRepo;
+    @PostMapping("/module/lectures")
+    public Lecture addLecture(@RequestBody Lecture lecture) {
 
-    @PostMapping("/module/{moduleId}/lectures")
-    public Lecture addLecture(@PathVariable(value = "moduleId") Long id, @RequestBody Lecture lecture) {
-
-        Module module = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
-        lecture.setModule(module);
+        // Module module = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+        // lecture.setModule(module);
         return this.service.addLecture(lecture);
     }
 
@@ -49,20 +46,20 @@ public class LectureController {
     }
 
     @GetMapping("/lecture/{id}")
-    public Lecture getOneLecture(@PathVariable(value = "id") Long id) {
+    public Lecture getLectureById(@PathVariable(value = "id") Long id) {
 
         return this.service.getLectureById(id);
     }
 
     @PutMapping("/lecture")
-    public Lecture updateTeacherById(@PathParam("id") Long id, @RequestBody Lecture lecture) {
+    public Lecture updateLectureById(@PathParam("id") Long id, @RequestBody Lecture lecture) {
         return this.service.updateLectureById(lecture, id);
 
     }
 
     @DeleteMapping("/lecture/{id}")
-    public void deleteLectureById(@PathVariable Long id) {
-        this.service.deleteLectureById(id);
+    public String deleteLectureById(@PathVariable Long id) {
+        return this.service.deleteLectureById(id);
     }
 
 }
