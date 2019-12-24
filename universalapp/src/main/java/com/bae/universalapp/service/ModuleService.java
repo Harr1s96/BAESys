@@ -42,7 +42,7 @@ public class ModuleService {
         toUpdate.setModuleName(module.getModuleName());
         toUpdate.setModuleCode(module.getModuleCode());
 
-        return toUpdate;
+        return this.moduleRepo.save(toUpdate);
     }
 
     public String deleteModuleById(Long id) {
