@@ -49,12 +49,12 @@ public class ModuleService {
 
         this.moduleRepo.deleteById(id);
 
-        boolean teacherCheck = this.moduleRepo.existsById(id);
+        boolean moduleCheck = this.moduleRepo.existsById(id);
 
-        if (teacherCheck) {
+        if (moduleCheck == false) {
             return "Module has not been deleted";
         }
-        return "Module deleted sucessfully";
+        return "Module deleted successfully";
 
     }
 

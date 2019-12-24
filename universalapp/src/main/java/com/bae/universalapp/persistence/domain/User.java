@@ -47,6 +47,20 @@ public class User {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object obj) {
 
+        if (this == obj) {
+            return true;
+        }
+
+        if (this.getClass() == obj.getClass()) {
+            return true;
+        }
+        
+        return super.equals(obj);
+    }
+
+    
     
 }

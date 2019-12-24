@@ -51,10 +51,10 @@ public class TeacherService {
 
         boolean teacherCheck = this.teacherRepo.existsById(id);
 
-        if (teacherCheck) {
+        if (teacherCheck == false) {
             return "Teacher has not been deleted";
         }
-        return "Teacher deleted sucessfully";
+        return "Teacher deleted successfully";
 
     }
 

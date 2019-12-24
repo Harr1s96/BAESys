@@ -42,7 +42,7 @@ public class UserService {
         toUpdate.setEmail(user.getEmail());
         toUpdate.setPassword(user.getPassword());
 
-        return toUpdate;
+        return this.userRepo.save(toUpdate);
     }
 
     public String deleteUserById(Long id) {
@@ -51,10 +51,10 @@ public class UserService {
 
         boolean userCheck = this.userRepo.existsById(id);
 
-        if (userCheck) {
+        if (userCheck == false) {
             return "User has not been deleted";
         }
-        return "User deleted sucessfully";
+        return "User deleted successfully";
 
     }
 

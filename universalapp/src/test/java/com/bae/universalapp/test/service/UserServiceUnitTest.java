@@ -92,10 +92,33 @@ public class UserServiceUnitTest {
     @Test
     public void updateUserByIdTest() {
 
+        User updatedUser = new User("jongeorgiou@coldmail.com", "pass123");
+
+        when(this.userRepo.findById(id))
+        .thenReturn(Optional.of(testUserWithId));
+
+        assertEquals(testUserWithId, this.userService.getUserById(id));
+
+        when(this.userRepo.save(updatedUser))
+        .thenReturn(updatedUser);
+
+        assertEquals(updatedUser, this.userService.updateUserById(updatedUser, id));
+
+        verify(this.userRepo, times(2)).findById(id);
+        verify(this.userRepo, times(1)).save(updatedUser);
+
     }
 
     @Test
     public void deleteUserByIdTest() {
+        
+        when(this.userRepo.existsById(id))
+        .thenReturn(true);
+
+        assertEquals("User deleted successfully", this.userService.deleteUserById(id));
+
+        verify(this.userRepo, times(1)).existsById(id);
+        verify(this.userRepo, times(1)).deleteById(id);
 
     } 
 
