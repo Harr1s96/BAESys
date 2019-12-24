@@ -42,7 +42,7 @@ public class TeacherService {
         toUpdate.setFirstName(teacher.getFirstName());
         toUpdate.setLastName(teacher.getLastName());
 
-        return toUpdate;
+        return this.teacherRepo.save(toUpdate);
     }
 
     public String deleteTeacherById(Long id) {
