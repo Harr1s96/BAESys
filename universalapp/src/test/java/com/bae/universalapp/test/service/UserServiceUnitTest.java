@@ -121,6 +121,4 @@ public class UserServiceUnitTest {
         verify(this.userRepo, times(1)).deleteById(id);
 
     } 
-
-
 }

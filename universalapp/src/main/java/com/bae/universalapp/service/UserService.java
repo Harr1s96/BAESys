@@ -17,22 +17,18 @@ public class UserService {
     private UserRepo userRepo;
 
     public UserService(UserRepo repo) {
-
         this.userRepo = repo;
     }
 
     public User addUser(User user) {
-
         return this.userRepo.save(user);
     }
 
     public User getUserById(Long id) {
-
         return this.userRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     public List<User> getAllUsers() {
-
         return this.userRepo.findAll();
     }
 
