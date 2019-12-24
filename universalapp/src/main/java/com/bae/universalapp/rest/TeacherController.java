@@ -42,7 +42,7 @@ public class TeacherController {
 	}
 
 	@GetMapping("/teacher/{id}")
-	public Teacher getOneTeacher(@PathVariable(value = "id") Long id) {
+	public Teacher getTeacherById(@PathVariable(value = "id") Long id) {
 
 		return this.service.getTeacherById(id);
 	}
@@ -54,8 +54,8 @@ public class TeacherController {
 	}
 
 	@DeleteMapping("/teacher/{id}")
-	public void deleteTeacherById(@PathVariable Long id) {
-		this.service.deleteTeacherById(id);
+	public String deleteTeacherById(@PathVariable Long id) {
+		return this.service.deleteTeacherById(id);
 	}
 
 }
