@@ -6,7 +6,6 @@ import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.service.EmptyModuleListException;
-import com.bae.universalapp.service.InvalidModuleCodeException;
 import com.bae.universalapp.service.ModuleService;
 import com.bae.universalapp.service.TeacherService;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +26,7 @@ public class TeacherController {
 	}
 
 	@PostMapping("/teacher")
-	public Teacher addTeacher(@RequestBody Teacher teacher)
-		throws EmptyModuleListException, InvalidModuleCodeException {
+	public Teacher addTeacher(@RequestBody Teacher teacher) throws EmptyModuleListException {
 
 		List<Module> theList = teacher.getModules();
 		this.moduleService.verifyModuleCode(theList);

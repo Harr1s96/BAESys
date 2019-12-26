@@ -60,14 +60,14 @@ public class ModuleService {
 
         boolean moduleCheck = this.moduleRepo.existsById(id);
 
-        if (moduleCheck == true) {
+        if (moduleCheck) {
             return "Module has not been deleted";
         }
         return "Module deleted successfully";
 
     }
 
-    public boolean verifyModuleCode(List<Module> moduleList) throws InvalidModuleCodeException, EmptyModuleListException {
+    public boolean verifyModuleCode(List<Module> moduleList) throws EmptyModuleListException {
 
         boolean verified = false;
 

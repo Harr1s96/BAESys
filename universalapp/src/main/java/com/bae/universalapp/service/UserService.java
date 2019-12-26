@@ -47,7 +47,7 @@ public class UserService {
 
         boolean userCheck = this.userRepo.existsById(id);
 
-        if (userCheck == true) {
+        if (userCheck) {
             return "User has not been deleted";
         }
         return "User deleted successfully";
