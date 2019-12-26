@@ -60,7 +60,7 @@ public class ModuleService {
 
         boolean moduleCheck = this.moduleRepo.existsById(id);
 
-        if (moduleCheck == false) {
+        if (moduleCheck == true) {
             return "Module has not been deleted";
         }
         return "Module deleted successfully";

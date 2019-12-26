@@ -47,7 +47,7 @@ public class LectureService {
 
         boolean lectureCheck = this.lectureRepo.existsById(id);
 
-        if (lectureCheck == false) {
+        if (lectureCheck == true) {
             return "Lecture has not been deleted";
         }
         return "Lecture deleted successfully";

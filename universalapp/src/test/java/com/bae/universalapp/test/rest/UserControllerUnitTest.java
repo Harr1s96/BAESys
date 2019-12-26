@@ -19,7 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class) // uses the SpringRunner to run the tests instead of the default runner
 public class UserControllerUnitTest {
 
     // instantiates the UserController class as a mock object
