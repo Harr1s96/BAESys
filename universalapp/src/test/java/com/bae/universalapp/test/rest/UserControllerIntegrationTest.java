@@ -37,9 +37,7 @@ public class UserControllerIntegrationTest {
     private UserRepo userRepo; 
 
     private User testUser;
-
     private User testUserWithId;
-
     private Long id;
 
     private ObjectMapper mapper = new ObjectMapper();

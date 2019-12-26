@@ -28,7 +28,7 @@ public class TeacherController {
 
 	@PostMapping("/teacher")
 	public Teacher addTeacher(@RequestBody Teacher teacher)
-			throws EmptyModuleListException, InvalidModuleCodeException {
+		throws EmptyModuleListException, InvalidModuleCodeException {
 
 		List<Module> theList = teacher.getModules();
 		this.moduleService.verifyModuleCode(theList);
@@ -36,7 +36,7 @@ public class TeacherController {
 
 	}
 
-	@GetMapping("/teacher")
+	@GetMapping("/teachers")
 	public List<Teacher> getAllTeachers() {
 		return this.service.getAllTeachers();
 	}
