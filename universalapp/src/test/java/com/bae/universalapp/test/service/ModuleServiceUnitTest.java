@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.repo.ModuleRepo;
 import com.bae.universalapp.service.EmptyModuleListException;
@@ -96,6 +97,30 @@ public class ModuleServiceUnitTest {
 
         verify(this.moduleRepo, times(2)).findById(id);
         verify(this.moduleRepo, times(1)).save(updatedModule);
+
+    }
+
+    @Test
+    public void updateLecturesByModuleIdTest() {
+
+        Module toUpdate = new Module("Statistical Thermodynamics", "CHEM 336");
+        Lecture lectureOne = new Lecture("lecture 1");
+        Lecture lectureTwo = new Lecture("lecture 2");
+        List<Lecture> lectureList = new ArrayList<>();
+
+        lectureList.add(lectureOne);
+        lectureList.add(lectureTwo);
+
+        when(this.moduleRepo.findById(id)).thenReturn(Optional.of(testModuleWithId));
+
+        assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
+
+        when(this.moduleRepo.save(toUpdate)).thenReturn(toUpdate);
+
+        assertEquals(toUpdate, this.moduleService.updateLecturesByModuleId(id, lectureList));
+
+        verify(this.moduleRepo, times(2)).findById(id);
+        verify(this.moduleRepo, times(1)).save(toUpdate);
 
     }
 

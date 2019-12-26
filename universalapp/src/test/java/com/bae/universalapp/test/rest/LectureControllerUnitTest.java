@@ -49,7 +49,7 @@ public class LectureControllerUnitTest {
     }
 
     @Test
-    public void addModuleTest() {
+    public void addLectureTest() {
         
         when(this.lectureService.addLecture(testLecture))
         .thenReturn(testLecture);
@@ -60,7 +60,7 @@ public class LectureControllerUnitTest {
     }
 
     @Test
-    public void getModuleByIdTest() {
+    public void getLectureByIdTest() {
 
         when(this.lectureService.getLectureById(this.id))
         .thenReturn(this.testLectureWithId);
@@ -71,7 +71,7 @@ public class LectureControllerUnitTest {
     }
 
     @Test
-    public void getAllModulesTest() {
+    public void getAllLecturesTest() {
 
         when(this.lectureService.getAllLectures())
         .thenReturn(this.lectureList);
@@ -82,7 +82,7 @@ public class LectureControllerUnitTest {
     }
 
     @Test
-    public void updateUserByIdTest() {
+    public void updateLectureByIdTest() {
 
         Lecture updateLecture = new Lecture("Statistical Thermodynamics");
 
@@ -101,7 +101,7 @@ public class LectureControllerUnitTest {
     }
 
     @Test
-    public void deleteUserByIdTest() {
+    public void deleteLectureByIdTest() {
         
         when(this.lectureService.deleteLectureById(id))
         .thenReturn("Lecture deleted successfully");

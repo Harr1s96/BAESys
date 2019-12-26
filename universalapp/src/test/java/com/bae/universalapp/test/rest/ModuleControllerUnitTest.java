@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.rest.ModuleController;
 import com.bae.universalapp.service.ModuleService;
@@ -82,7 +83,7 @@ public class ModuleControllerUnitTest {
     }
 
     @Test
-    public void updateUserByIdTest() {
+    public void updateModuleByIdTest() {
 
         Module updateTeacher = new Module("Statistical Thermodynamics", "CHEM 322");
 
@@ -101,7 +102,31 @@ public class ModuleControllerUnitTest {
     }
 
     @Test
-    public void deleteUserByIdTest() {
+    public void updateLecturesByModuleIdTest() {
+
+        Module toUpdate = new Module("Statistical Thermodynamics", "CHEM 336");
+        Lecture lectureOne = new Lecture("lecture 1");
+        Lecture lectureTwo = new Lecture("lecture 2");
+        List<Lecture> lectureList = new ArrayList<>();
+
+        lectureList.add(lectureOne);
+        lectureList.add(lectureTwo);
+
+        when(this.moduleService.getModuleById(id)).thenReturn(testModuleWithId);
+
+        assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
+
+        when(this.moduleService.updateLecturesByModuleId(id, lectureList)).thenReturn(toUpdate);
+
+        assertEquals(toUpdate, this.moduleService.updateLecturesByModuleId(id, lectureList));
+
+        verify(this.moduleService, times(1)).getModuleById(id);
+        verify(this.moduleService, times(1)).updateLecturesByModuleId(id, lectureList);
+
+    }
+
+    @Test
+    public void deleteModuleByIdTest() {
         
         when(this.moduleService.deleteModuleById(id))
         .thenReturn("Module deleted successfully");

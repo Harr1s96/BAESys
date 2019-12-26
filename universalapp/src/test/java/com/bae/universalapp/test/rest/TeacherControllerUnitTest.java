@@ -77,7 +77,7 @@ public class TeacherControllerUnitTest {
     }
 
     @Test
-    public void getAllUsersTest() {
+    public void getAllTeacherTest() {
 
         when(this.teacherService.getAllTeachers())
         .thenReturn(this.teacherList);
@@ -88,7 +88,7 @@ public class TeacherControllerUnitTest {
     }
 
     @Test
-    public void updateUserByIdTest() {
+    public void updateTeacherByIdTest() {
 
         Teacher updateTeacher = new Teacher("Liam", "McIvor");
 
@@ -107,7 +107,7 @@ public class TeacherControllerUnitTest {
     }
 
     @Test
-    public void deleteUserByIdTest() {
+    public void deleteTeacherByIdTest() {
         
         when(this.teacherService.deleteTeacherById(id))
         .thenReturn("Teacher deleted successfully");
