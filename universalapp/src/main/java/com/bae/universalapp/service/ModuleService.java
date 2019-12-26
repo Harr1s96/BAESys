@@ -46,12 +46,12 @@ public class ModuleService {
         return this.moduleRepo.save(toUpdate);
     }
 
-    public List<Lecture> updateLecturesByModuleId(Long id, List<Lecture> lectureList) {
+    public Module updateLecturesByModuleId(Long id, List<Lecture> lectureList) {
         
         Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setLectures(lectureList);
 
-        return lectureList;
+        return this.moduleRepo.save(toUpdate);
     }
 
     public String deleteModuleById(Long id) {

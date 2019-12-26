@@ -39,13 +39,13 @@ public class ModuleController {
 	}
 
 	@PutMapping("/teachers/module/{moduleId}")
-	public Module updateModuleById(@PathVariable Long id, @RequestBody Module teacher) {
-		return this.service.updateModuleById(teacher, id);
+	public Module updateModuleById(@PathVariable Long id, @RequestBody Module module) {
+		return this.service.updateModuleById(module, id);
 
 	}
 
 	@PutMapping("/module/{moduleId}")
-	public List<Lecture> updateLecturesByModuleId(@PathVariable(value = "moduleId") Long id, @RequestBody List<Lecture> lectureList) {
+	public Module updateLecturesByModuleId(@PathVariable(value = "moduleId") Long id, @RequestBody List<Lecture> lectureList) {
 		return this.service.updateLecturesByModuleId(id, lectureList);
 	}
 

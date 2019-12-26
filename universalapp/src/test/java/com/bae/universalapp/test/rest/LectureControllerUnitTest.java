@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bae.universalapp.persistence.domain.Lecture;
-import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.rest.LectureController;
 import com.bae.universalapp.service.LectureService;
-import com.bae.universalapp.service.ModuleService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,10 +27,6 @@ public class LectureControllerUnitTest {
 
     @Mock
     private LectureService lectureService;
-
-    // needed to test addLecture method
-    @Mock
-    private ModuleService moduleService;
 
     private List<Lecture> lectureList;
 
@@ -54,20 +48,16 @@ public class LectureControllerUnitTest {
         this.testLectureWithId.setId(this.id);
     }
 
-    // @Test
-    // public void addModuleTest() {
-
-    //     Module placeholderModule = new Module("moduleName", "CHEM 123");
-    //     this.moduleService.addModule(placeholderModule);
-
+    @Test
+    public void addModuleTest() {
         
-    //     when(this.lectureService.addLecture(testLecture))
-    //     .thenReturn(testLecture);
+        when(this.lectureService.addLecture(testLecture))
+        .thenReturn(testLecture);
 
-    //     assertEquals(this.testLecture, this.lectureController.addLecture(1L, testLecture));
+        assertEquals(this.testLecture, this.lectureController.addLecture(testLecture));
 
-    //     verify(this.lectureService, times(1)).addLecture(this.testLecture);
-    // }
+        verify(this.lectureService, times(1)).addLecture(this.testLecture);
+    }
 
     @Test
     public void getModuleByIdTest() {

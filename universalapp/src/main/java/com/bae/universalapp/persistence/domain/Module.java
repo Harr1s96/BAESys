@@ -18,7 +18,7 @@ public class Module {
     private String moduleName;
     private String moduleCode;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "module_id")
     private List<Lecture> lectures;
 
