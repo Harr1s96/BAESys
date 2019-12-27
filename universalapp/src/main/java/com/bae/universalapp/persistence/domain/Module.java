@@ -93,11 +93,13 @@ public class Module {
         if (this == obj) {
             return true;
         }
-
+        if (null == obj) {
+            return false;
+        }
         if (this.getClass() == obj.getClass()) {
             return true;
         }
         return super.equals(obj);
     }
-
+    
 }

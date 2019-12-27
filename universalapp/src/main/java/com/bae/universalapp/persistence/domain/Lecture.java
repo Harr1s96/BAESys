@@ -2,6 +2,8 @@ package com.bae.universalapp.persistence.domain;
 
 import javax.persistence.Entity;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 
 import javax.persistence.Id;
@@ -60,11 +62,12 @@ public class Lecture {
         if (this == obj) {
             return true;
         }
-
+        if (Objects.isNull(obj)) {
+            return false;
+        }
         if (this.getClass() == obj.getClass()) {
             return true;
         }
         return super.equals(obj);
     }
-
 }

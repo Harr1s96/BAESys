@@ -109,7 +109,6 @@ public class TeacherControllerIntegrationTest {
             .getContentAsString();
 
         assertEquals(this.mapper.writeValueAsString(teacherList), result);
-
     }
 
     @Test

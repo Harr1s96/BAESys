@@ -34,12 +34,12 @@ public class ModuleController {
 	}
 
 	@GetMapping("/teachers/modules/{moduleId}")
-	public Module getModuleById(@PathVariable Long id) {
+	public Module getModuleById(@PathVariable(value = "moduleId") Long id) {
 		return this.service.getModuleById(id);
 	}
 
 	@PutMapping("/teachers/module/{moduleId}")
-	public Module updateModuleById(@PathVariable Long id, @RequestBody Module module) {
+	public Module updateModuleById(@PathVariable(value = "moduleId") Long id, @RequestBody Module module) {
 		return this.service.updateModuleById(module, id);
 
 	}
@@ -49,8 +49,8 @@ public class ModuleController {
 		return this.service.updateLecturesByModuleId(id, lectureList);
 	}
 
-	@DeleteMapping("/teachers/module/{id}")
-	public String deleteModuleById(@PathVariable Long id) {
+	@DeleteMapping("/teachers/module/{moduleId}")
+	public String deleteModuleById(@PathVariable(value = "moduleId") Long id) {
 		return this.service.deleteModuleById(id);
 	}
 

@@ -1,6 +1,8 @@
 package com.bae.universalapp.persistence.domain;
 
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.*;
 
 /**
@@ -90,11 +92,12 @@ public class Teacher {
         if (this == obj) {
             return true;
         }
-
+        if (Objects.isNull(obj)) {
+            return false;
+        }
         if (this.getClass() == obj.getClass()) {
             return true;
         }
         return super.equals(obj);
     }
-
 }
