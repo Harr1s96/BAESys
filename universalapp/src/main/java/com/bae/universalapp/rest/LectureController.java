@@ -31,8 +31,8 @@ public class LectureController {
         return this.service.getAllLectures();
     }
 
-    @GetMapping("/lecture/{id}")
-    public Lecture getLectureById(@PathVariable(value = "id") Long id) {
+    @GetMapping("/lecture/{lectureId}")
+    public Lecture getLectureById(@PathVariable(value = "lectureId") Long id) {
 
         return this.service.getLectureById(id);
     }
@@ -43,8 +43,8 @@ public class LectureController {
 
     }
 
-    @DeleteMapping("/lecture/{id}")
-    public String deleteLectureById(@PathVariable Long id) {
+    @DeleteMapping("/lecture/{lectureId}")
+    public String deleteLectureById(@PathVariable(value = "lectureId") Long id) {
         return this.service.deleteLectureById(id);
     }
 
