@@ -115,7 +115,7 @@ public class UserServiceUnitTest {
         when(this.userRepo.existsById(id))
         .thenReturn(true);
 
-        assertEquals("User deleted successfully", this.userService.deleteUserById(id));
+        assertEquals("User has not been deleted", this.userService.deleteUserById(id));
 
         verify(this.userRepo, times(1)).existsById(id);
         verify(this.userRepo, times(1)).deleteById(id);

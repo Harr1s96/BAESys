@@ -139,11 +139,12 @@ public class ModuleControllerIntegrationTest {
         Lecture lectureOne = new Lecture("lecture 1");
         Lecture lectureTwo = new Lecture("lecture 2");
 
-        lectureOne.setId(1L);
-        lectureTwo.setId(2L);
-
-        lectureList.add(lectureOne);
-        lectureList.add(lectureTwo);
+        /**
+         *  contributed by James Kiesslinger
+         */
+        lectureList.add(this.lectureRepo.save(lectureOne)); 
+        lectureList.add(this.lectureRepo.save(lectureTwo)); 
+        
         this.testModuleWithId.setLectures(lectureList);
 
         String result = this.mockMvc.perform(

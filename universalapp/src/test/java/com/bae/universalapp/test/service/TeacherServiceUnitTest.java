@@ -108,7 +108,7 @@ public class TeacherServiceUnitTest {
         when(this.teacherRepo.existsById(id))
         .thenReturn(true);
 
-        assertEquals("Teacher deleted successfully", this.teacherService.deleteTeacherById(id));
+        assertEquals("Teacher has not been deleted", this.teacherService.deleteTeacherById(id));
 
         verify(this.teacherRepo, times(1)).existsById(id);
         verify(this.teacherRepo, times(1)).deleteById(id);

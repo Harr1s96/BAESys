@@ -129,7 +129,7 @@ public class ModuleServiceUnitTest {
 
         when(this.moduleRepo.existsById(id)).thenReturn(true);
 
-        assertEquals("Module deleted successfully", this.moduleService.deleteModuleById(id));
+        assertEquals("Module has not been deleted", this.moduleService.deleteModuleById(id));
 
         verify(this.moduleRepo, times(1)).existsById(id);
         verify(this.moduleRepo, times(1)).deleteById(id);
