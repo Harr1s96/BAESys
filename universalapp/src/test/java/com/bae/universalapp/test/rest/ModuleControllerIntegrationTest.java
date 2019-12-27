@@ -120,7 +120,7 @@ public class ModuleControllerIntegrationTest {
         updatedModule.setLectures(Collections.emptyList());
         
         String result = this.mockMvc.perform(
-            request(HttpMethod.PUT, "/teachers/modules/?id=" + this.id)
+            request(HttpMethod.PUT, "/teachers/module/" + this.id)
             .contentType(MediaType.APPLICATION_JSON)
             .content(this.mapper.writeValueAsString(testModuleTwo))
             .accept(MediaType.APPLICATION_JSON))
@@ -139,14 +139,17 @@ public class ModuleControllerIntegrationTest {
         Lecture lectureOne = new Lecture("lecture 1");
         Lecture lectureTwo = new Lecture("lecture 2");
 
+        lectureOne.setId(1L);
+        lectureTwo.setId(2L);
+
         lectureList.add(lectureOne);
         lectureList.add(lectureTwo);
         this.testModuleWithId.setLectures(lectureList);
 
         String result = this.mockMvc.perform(
-            request(HttpMethod.PUT, "/teachers/modules/?id=" + this.id)
+            request(HttpMethod.PUT, "/module/" + this.id)
             .contentType(MediaType.APPLICATION_JSON)
-            .content(this.mapper.writeValueAsString(testModuleWithId))
+            .content(this.mapper.writeValueAsString(lectureList))
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andReturn()
