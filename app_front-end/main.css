@@ -1,20 +1,17 @@
 
 body {
-  background-image: 
-    url('https://source.unsplash.com/3THn0EN_Ydo/1920x1080'); 
-  /* background-color: #66e0ff; */
+  background-image: linear-gradient(
+                            rgba(140, 180, 240, 0.4),
+                            rgba(140, 180, 240, 0.4)), 
+                              url('https://source.unsplash.com/szFUQoyvrxM/1920x1080');
 }
 
 .navbar-brand {
   text-align: left;
 }
 
-/* .main-body {
-  opacity: 1.0;
-} */
-
 .navbar {
-  border-bottom:15px solid #0f0535;
+  border-bottom:15px solid darkslateblue;
 }
 
 .list-group {

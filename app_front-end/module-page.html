@@ -17,6 +17,12 @@
 
     <!-- custom internal css for personal touch -->
     <link href="main.css" type="text/css" rel="stylesheet" />
+
+    <style>
+      .list-group h1 {
+        background-color: cornflowerblue;
+      }
+    </style>
   </head>
 
   <body>
@@ -55,13 +61,8 @@
     </nav>
 
     <ul class="list-group">
-      <h1>Lecturers</h1>
-      <li
-        class="list-group-item list-group-item-action"
-        onclick="getModules();"
-      >
-        Dr. Who
-      </li>
+      <h1>Lectures</h1>
+      <li class="list-group-item list-group-item-action">Dr. Who</li>
       <li class="list-group-item list-group-item-action">
         Dapibus ac facilisis in
       </li>
@@ -80,56 +81,8 @@
       <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
     </ul>
 
-    <div id="list-div"></div>
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.slim.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      "use strict";
-      const mainDiv = document.getElementById("list-div");
-      // const listElements = document.getElementsByTagName("li");
-
-      function getModules() {
-        const dropList = document.createElement("div");
-        dropList.className = "dropdown";
-
-        const dropButton = document.createElement("button");
-        dropButton.className = "btn btn-secondary dropdown-toggle";
-        dropButton.id = "dropdownMenuButton";
-        dropButton.innerText = "Select Module";
-        dropButton.onclick = getDropDown();
-
-        const dropMenu = document.createElement("div");
-        dropMenu.className = "dropdown-menu";
-
-        dropList.appendChild(dropButton);
-        dropList.appendChild(dropMenu);
-        mainDiv.appendChild(dropList);
-      }
-
-      function getDropDown() {
-        // for (let i = 0; i <= 5; i++) {
-        //   const aElement = document.createElement("a");
-        //   aElement.className = "dropdown-item";
-        //   aElement.href = "#";
-        //   aElement.innerText = "10";
-        //   dropMenu.appendChild(aElement);
-        // }
-        // mainDiv.appendChild(dropList);
-      }
-    </script>
   </body>
 </html>
-
-<!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div> -->
