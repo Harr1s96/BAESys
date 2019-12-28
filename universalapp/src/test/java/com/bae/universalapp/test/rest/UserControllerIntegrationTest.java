@@ -103,7 +103,6 @@ public class UserControllerIntegrationTest {
             .getContentAsString();
         
         assertEquals(this.mapper.writeValueAsString(testUserWithId), result);
-
     }
 
     @Test
