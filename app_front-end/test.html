@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Clickable Dropdown</h2>
+<p>Click on the button to open the dropdown menu.</p>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<form action = " ">
+    <h1>Please select a color</h1>
+    <fieldset>
+    <select id = "selColor">
+     <option value = "#FFFFFF">White</option>
+     <option value = "#FF0000">Red</option>
+     <option value = "#FFCC00">Orange</option>
+     <option value = "#FFFF00">Yellow</option>
+     <option value = "#00FF00">Green</option>
+     <option value = "#0000FF">Blue</option>
+     <option value = "#663366">Indigo</option>
+     <option value = "#FF00FF">Violet</option>
+    </select>
+    <input type = "button"
+      value = "change color"
+      onclick = "changeColor()" />
+    </fieldset>
+   </form>
+
+<select name="plan" id="plan"> 
+    <option value="none" selected disabled hidden> Select an Option </option> 
+    <option value="free">Free</option> 
+    <option value="starter">Starter </option> 
+    <option value="professional">Professional</option> 
+    <option value="corporate">Corporate</option> 
+</select> 
+
+</body>
+</html>
