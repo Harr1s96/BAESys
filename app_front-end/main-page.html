@@ -35,7 +35,7 @@
   
 </head>
 
-<body>
+<body onload="showTeachers();">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
     
@@ -68,54 +68,15 @@
     
   </nav>
 
-  <ul class="list-group">
-    <h1>Lecturers</h1>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Dr. Who </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Dapibus ac facilisis in </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Morbi leo risus </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Porta ac consectetur ac </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Vestibulum at eros </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Porta ac consectetur ac </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Vestibulum at eros </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Porta ac consectetur ac </li>
-    <li class="list-group-item list-group-item-action" onclick="getModules();"> Vestibulum at eros </li>
-  </ul>
+  <div id="teacher-list">
+    <ul id="list-group" class="list-group">
+      <h1>Lecturers</h1>
+    </ul>
+  </div>
 
     <div id="list-div"></div>
 
-    <script>
-      "use strict";
-      
-      // get the dive container that the dropdown list will be within
-      const mainDiv = document.getElementById("list-div");
-
-      function getModules() {
-        
-        mainDiv.innerHTML = "";
-        
-        const dropList = document.createElement("select");
-        dropList.name = "dropdown";
-        dropList.id = "dropdown";
-
-        const dropListTitle = document.createElement("option");
-        dropListTitle.value = "none";
-        dropListTitle.setAttribute("selected", "");
-        dropListTitle.setAttribute("hidden", "");
-        dropListTitle.text = "Please select a module";
-
-        mainDiv.appendChild(dropList);
-        dropList.appendChild(dropListTitle); 
-
-        for (let i = 0; i <= 5; i++) {
-          const optionElement = document.createElement("option");
-          optionElement.value = "#";
-          optionElement.text = "options";
-
-          dropList.appendChild(optionElement);
-        }
-      }
-
-    </script>
+    <script src="main-page.js"></script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.slim.min.js"></script>
