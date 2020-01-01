@@ -53,4 +53,17 @@ public class LectureService {
         return "Lecture deleted successfully";
     }
 
+    public String deleteAllLectures() {
+        
+        this.lectureRepo.truncateLectureTable();
+        this.lectureRepo.flush();
+
+        boolean entityCheck = this.lectureRepo.findAll().isEmpty();
+
+        if (entityCheck) {
+            return "Lecture table is not empty";
+        }
+        return "Lecture table has been emptied successfully";
+    }
+
 }

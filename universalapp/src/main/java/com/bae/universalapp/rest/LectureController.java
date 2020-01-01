@@ -48,4 +48,9 @@ public class LectureController {
         return this.service.deleteLectureById(id);
     }
 
+    @DeleteMapping("/deleteAllLectures")
+	public String deleteAllLectures() {
+		return this.service.deleteAllLectures();
+	}
+
 }

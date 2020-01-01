@@ -54,4 +54,17 @@ public class UserService {
 
     }
 
+    public String deleteAllUsers() {
+
+        this.userRepo.truncateUserTable();
+        this.userRepo.flush();
+
+        boolean entityCheck = this.userRepo.findAll().isEmpty();
+
+        if (entityCheck) {
+            return "User table is not empty";
+        }
+        return "User table has been emptied successfully";
+    }
+
 }

@@ -54,4 +54,9 @@ public class ModuleController {
 		return this.service.deleteModuleById(id);
 	}
 
+	@DeleteMapping("/deleteAllModules")
+	public String deleteAllModules() {
+		return this.service.deleteAllModules();
+	}
+
 }

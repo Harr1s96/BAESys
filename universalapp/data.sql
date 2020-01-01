@@ -1,3 +1,6 @@
+INSERT INTO user (id, email, password) VALUES
+(1, 'harrishanley@email.com', 'mypass');
+
 INSERT INTO teacher (id, first_name, last_name) VALUES
 (1, 'Matt', 'Farrow'),
 (2, 'Jonathan', 'Georgiou'),
