@@ -7,7 +7,8 @@ const listGroup = document.getElementById("list-group");
 const mainDiv = document.getElementById("list-div");
 
 const teacherData = axios.get("http://localhost:8081/teachers")
-    .then(response => {return response.data});
+    .then(response => {console.log(response.data); 
+                    return response.data;});
 
 function showTeachers() {
 
@@ -15,15 +16,14 @@ function showTeachers() {
         for (let teacher of data) {
             const listElement = document.createElement("li");
             listElement.className = "list-group-item list-group-item-action";
-            listElement.value = teacher.id;
-            listElement.onclick = (function() {getModules(this.value)});
             listElement.innerHTML = teacher.firstName + " " + teacher.lastName;
+            listElement.onclick = (function() {getModules(this.innerHTML)});
             listGroup.appendChild(listElement);
         }
     });
 }
 
-function getModules(listValue) {
+function getModules(listText) {
 
     mainDiv.innerHTML = "";
 
@@ -45,7 +45,7 @@ function getModules(listValue) {
 
     for (let i = 0; i < listElems.length; i++) {    
         teacherData.then(data => {
-            if (data[i].id === listValue) {
+            if ((data[i].firstName + " " + data[i].lastName) == listText) {
                 for (let m of data[i].modules) {  
                     const optionElement = document.createElement("option"); 
                     optionElement.value = "lecture-page.html";  
