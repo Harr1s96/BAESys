@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserRepo extends JpaRepository<User, Long> {
 
+    User findUserByEmail(String email);
+
     @Modifying
     @Transactional
     @Query(value = "delete from user", nativeQuery = true)

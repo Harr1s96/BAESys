@@ -20,6 +20,11 @@ public class UserController {
 		this.service = service;
 	}
 
+	@RequestMapping("/signin")
+	public String login() {
+		return "main-page.html";
+	}
+
 	@PostMapping("/user")
 	public User addUser(@RequestBody User user) {
 		return this.service.addUser(user);

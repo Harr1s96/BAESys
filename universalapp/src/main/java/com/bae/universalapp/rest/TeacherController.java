@@ -24,7 +24,7 @@ public class TeacherController {
 		this.service = service;
 		this.moduleService = moduleService;
 	}
-
+ 
 	@PostMapping("/teacher")
 	public Teacher addTeacher(@RequestBody Teacher teacher) throws EmptyModuleListException {
 
