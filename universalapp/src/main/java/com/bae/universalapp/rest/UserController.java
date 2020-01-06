@@ -22,7 +22,7 @@ public class UserController {
 
 	@RequestMapping("/signin")
 	public String login() {
-		return "main-page.html";
+		return "index.html";
 	}
 
 	@PostMapping("/user")

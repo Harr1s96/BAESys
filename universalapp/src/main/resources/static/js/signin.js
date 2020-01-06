@@ -46,10 +46,3 @@
             ])
             .then(responseArr => console.log(responseArr));
         }
-
-        function login() {
-
-            let loginForm = document.querySelector('form');
-            let loginData = new FormData(loginForm);
-            // axios.post("http://")
-        }
