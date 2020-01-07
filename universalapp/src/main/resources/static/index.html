@@ -32,7 +32,7 @@
       font-size: xx-large;
     }
   </style>
-  
+
 </head>
 
 <body onload="showTeachers();">
@@ -68,6 +68,17 @@
     
   </nav>
 
+  <div id="input-field">
+    
+      <label for="email">Lecturer</label>
+      <input type="text" id="lecturer" placeholder="Enter lecturer name">
+      
+      <label for="pwd">Module</label>
+      <input type="text" id="module" placeholder="Enter Module Name">
+      <button onclick="postData();">Submit</button>
+  
+  </div>
+
   <div id="teacher-list">
     <ul id="list-group" class="list-group">
       <h1>Lecturers</h1>
@@ -76,7 +87,7 @@
 
     <div id="list-div"></div>
 
-    <script src="/javascript/index.js"></script>
+    <script src="/js/index.js"></script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.slim.min.js"></script>

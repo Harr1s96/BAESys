@@ -10,6 +10,19 @@ const teacherData = axios.get("http://localhost:8081/teachers")
     .then(response => {console.log(response.data); 
                     return response.data;});
 
+function postData() {
+
+    let lecturer = document.getElementById("lecturer").value;
+    let theModule = document.getElementById("module").value;
+
+    const toPost = {"firstName":lecturer,
+            "lastName":"Hanley",
+            "modules":[{"moduleName": theModule, "moduleCode":"CHEM 154"}]}
+
+    axios.post("http://localhost:8081/teacher", toPost)
+        .then(response => {console.log(response); location.reload();})
+    }
+
 function showTeachers() {
 
     teacherData.then(data => {
