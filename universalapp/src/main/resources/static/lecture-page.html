@@ -89,9 +89,12 @@
       const mainDiv = document.getElementById("list-div");
     
 
-      const lectureData = axios.get("http://localhost:8081/module/lectures")
+      const lectureData = axios.get("http://localhost:8081/lecture")
           .then(response => {console.log(response.data); 
                           return response.data;});
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('id');
 
 function postData() {
 
@@ -99,13 +102,13 @@ function postData() {
 
     const toPost = {"lectures": [{"lectureName": lectureName}]}
 
-    axios.put("http://localhost:8081/teacher", toPost)
+    axios.put("http://localhost:8081/teacher?id=" + myParam, toPost)
         .then(response => {console.log(response); location.reload();})
     }
 
     function showLectures() {
 
-        teacherData.then(data => {
+        lectureData.then(data => {
             for (let lecture of data) {
                 const listElement = document.createElement("li");
                 listElement.className = "list-group-item list-group-item-action";

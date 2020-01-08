@@ -51,7 +51,7 @@ public class ModuleService {
         Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setLectures(lectureList);
 
-        return this.moduleRepo.save(toUpdate);
+        return this.moduleRepo.saveAndFlush(toUpdate);
     }
 
     public String deleteModuleById(Long id) {
