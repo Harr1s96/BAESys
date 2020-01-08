@@ -12,12 +12,15 @@ const teacherData = axios.get("http://localhost:8081/teachers")
 
 function postData() {
 
-    let lecturer = document.getElementById("lecturer").value;
-    let theModule = document.getElementById("module").value;
+    let str = document.getElementById("lecturer").value;
+    let lecturerNameArray = str.split(" ");
+    
+    let moduleName = document.getElementById("moduleName").value;
+    let moduleCode = document.getElementById("moduleCode").value;
 
-    const toPost = {"firstName":lecturer,
-            "lastName":"Hanley",
-            "modules":[{"moduleName": theModule, "moduleCode":"CHEM 154"}]}
+    const toPost = {"firstName":lecturerNameArray[0],
+            "lastName":lecturerNameArray[1],
+            "modules":[{"moduleName": moduleName, "moduleCode": moduleCode}]}
 
     axios.post("http://localhost:8081/teacher", toPost)
         .then(response => {console.log(response); location.reload();})
