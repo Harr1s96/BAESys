@@ -63,8 +63,8 @@ function getModules(listText) {
         teacherData.then(data => {
             if ((data[i].firstName + " " + data[i].lastName) == listText) {
                 for (let m of data[i].modules) {  
-                    const optionElement = document.createElement("option"); 
-                    optionElement.value = "lecture-page.html";  
+                    const optionElement = document.createElement("option");
+                    optionElement.value = "lecture-page.html?id=" + data[i].id;  
                     optionElement.text = m.moduleCode; 
                     dropList.appendChild(optionElement);
                 }

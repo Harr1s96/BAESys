@@ -31,4 +31,15 @@ padding-bottom: 3%;
 
 #input-field {
   margin: 20px;
+  position: absolute;
+  left: 600px;
+}
+
+#submit {
+  background-color: orange;
+  width: 95px;
+  border: none;
+  text-align: center;
+  font-size: 22px;
+  cursor: pointer;
 }
