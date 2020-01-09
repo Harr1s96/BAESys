@@ -33,6 +33,10 @@ public class LectureService {
         return this.lectureRepo.findAll();
     }
 
+    // public List<Lecture> getAllLecturesById(List<Long> id) {
+    //     return this.lectureRepo.findAllById(id);
+    // }
+
     public Lecture updateLectureById(Lecture lecture, Long id) {
 
         Lecture toUpdate = this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);

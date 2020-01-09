@@ -31,6 +31,11 @@ public class LectureController {
         return this.service.getAllLectures();
     }
 
+    // @GetMapping("lecture/{lectureId}")
+    // public List<Lecture> getAllLecturesById(List<Long> id) {
+    //     return this.service.getAllLecturesById(id);
+    // }
+
     @GetMapping("/lecture/{lectureId}")
     public Lecture getLectureById(@PathVariable(value = "lectureId") Long id) {
 
