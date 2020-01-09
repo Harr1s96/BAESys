@@ -18,7 +18,7 @@ public class Module {
     private String moduleName;
     private String moduleCode;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "module_id")
     private List<Lecture> lectures;
 
@@ -29,6 +29,20 @@ public class Module {
     public Module(String moduleName, String moduleCode) {
         this.moduleName = moduleName;
         this.moduleCode = moduleCode;
+    }
+
+    /**
+     * @param lectures the lectures to set
+     */
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
+
+    /**
+     * @return the lectures
+     */
+    public List<Lecture> getLectures() {
+        return lectures;
     }
 
     /**
@@ -73,4 +87,19 @@ public class Module {
         return moduleCode;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj) {
+            return true;
+        }
+        if (null == obj) {
+            return false;
+        }
+        if (this.getClass() == obj.getClass()) {
+            return true;
+        }
+        return super.equals(obj);
+    }
+    
 }

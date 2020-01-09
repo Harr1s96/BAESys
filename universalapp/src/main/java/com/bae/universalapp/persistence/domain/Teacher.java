@@ -1,6 +1,8 @@
 package com.bae.universalapp.persistence.domain;
 
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.*;
 
 /**
@@ -10,7 +12,7 @@ import javax.persistence.*;
 public class Teacher {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
@@ -84,4 +86,18 @@ public class Teacher {
         return lastName;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj) {
+            return true;
+        }
+        if (Objects.isNull(obj)) {
+            return false;
+        }
+        if (this.getClass() == obj.getClass()) {
+            return true;
+        }
+        return super.equals(obj);
+    }
 }

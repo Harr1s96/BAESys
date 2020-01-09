@@ -3,6 +3,7 @@ package com.bae.universalapp.service;
 import java.util.List;
 
 import com.bae.universalapp.persistence.repo.ModuleRepo;
+import com.bae.universalapp.persistence.domain.Lecture;
 import com.bae.universalapp.persistence.domain.Module;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -42,23 +43,44 @@ public class ModuleService {
         toUpdate.setModuleName(module.getModuleName());
         toUpdate.setModuleCode(module.getModuleCode());
 
-        return toUpdate;
+        return this.moduleRepo.save(toUpdate);
+    }
+
+    public Module updateLecturesByModuleId(Long id, List<Lecture> lectureList) {
+        
+        Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+        toUpdate.getLectures().addAll(lectureList);
+
+        return this.moduleRepo.saveAndFlush(toUpdate);
     }
 
     public String deleteModuleById(Long id) {
 
         this.moduleRepo.deleteById(id);
 
-        boolean teacherCheck = this.moduleRepo.existsById(id);
+        boolean moduleCheck = this.moduleRepo.existsById(id);
 
-        if (teacherCheck) {
+        if (moduleCheck) {
             return "Module has not been deleted";
         }
-        return "Module deleted sucessfully";
+        return "Module deleted successfully";
 
     }
 
-    public boolean verifyModuleCode(List<Module> moduleList) throws InvalidModuleCodeException, EmptyModuleListException {
+    public String deleteAllModules() {
+
+        this.moduleRepo.truncateModuleTable();
+        this.moduleRepo.flush();
+
+        boolean entityCheck = this.moduleRepo.findAll().isEmpty();
+
+        if (entityCheck) {
+            return "Module table is not empty";
+        }
+        return "Module table has been emptied successfully";
+    }
+
+    public boolean verifyModuleCode(List<Module> moduleList) throws EmptyModuleListException {
 
         boolean verified = false;
 
@@ -78,5 +100,18 @@ public class ModuleService {
         return verified;
 
     }
+
+	public boolean verifyModuleCode(Module module) {
+
+        boolean verified = false;
+
+        if (module.getModuleCode().matches("CHEM\\s\\d{3}")) {
+            verified = true;
+        }
+        else {
+            throw new InvalidModuleCodeException();
+        }
+        return verified;
+	}
 
 }

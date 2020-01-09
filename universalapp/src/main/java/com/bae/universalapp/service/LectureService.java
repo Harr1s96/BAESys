@@ -25,11 +25,6 @@ public class LectureService {
 
     }
 
-    // public List<Lecture> addLectureList(List<Lecture> lectureList) {
-
-    //     return this.lectureRepo.saveAll(lectureList);
-    // }
-
     public Lecture getLectureById(Long id) {
         return this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
@@ -38,12 +33,16 @@ public class LectureService {
         return this.lectureRepo.findAll();
     }
 
+    // public List<Lecture> getAllLecturesById(List<Long> id) {
+    //     return this.lectureRepo.findAllById(id);
+    // }
+
     public Lecture updateLectureById(Lecture lecture, Long id) {
 
         Lecture toUpdate = this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.setLectureName(lecture.getLectureName());
 
-        return toUpdate;
+        return this.lectureRepo.save(toUpdate);
     }
 
     public String deleteLectureById(Long id) {
@@ -55,7 +54,20 @@ public class LectureService {
         if (lectureCheck) {
             return "Lecture has not been deleted";
         }
-        return "Lecture deleted sucessfully";
+        return "Lecture deleted successfully";
+    }
+
+    public String deleteAllLectures() {
+        
+        this.lectureRepo.truncateLectureTable();
+        this.lectureRepo.flush();
+
+        boolean entityCheck = this.lectureRepo.findAll().isEmpty();
+
+        if (entityCheck) {
+            return "Lecture table is not empty";
+        }
+        return "Lecture table has been emptied successfully";
     }
 
 }

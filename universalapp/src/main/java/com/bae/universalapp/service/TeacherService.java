@@ -42,7 +42,7 @@ public class TeacherService {
         toUpdate.setFirstName(teacher.getFirstName());
         toUpdate.setLastName(teacher.getLastName());
 
-        return toUpdate;
+        return this.teacherRepo.save(toUpdate);
     }
 
     public String deleteTeacherById(Long id) {
@@ -54,8 +54,22 @@ public class TeacherService {
         if (teacherCheck) {
             return "Teacher has not been deleted";
         }
-        return "Teacher deleted sucessfully";
+        return "Teacher deleted successfully";
 
+    }
+
+    public String deleteAllTeachers() {
+
+        for (Teacher teacher : this.teacherRepo.findAll()) {
+            this.teacherRepo.delete(teacher);
+        }
+
+        boolean entityCheck = this.teacherRepo.findAll().isEmpty();
+
+        if (entityCheck) {
+            return "Teacher table is not empty";
+        }
+        return "Teacher table has been emptied successfully";
     }
 
 }

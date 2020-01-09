@@ -6,7 +6,6 @@ import javax.websocket.server.PathParam;
 import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.service.EmptyModuleListException;
-import com.bae.universalapp.service.InvalidModuleCodeException;
 import com.bae.universalapp.service.ModuleService;
 import com.bae.universalapp.service.TeacherService;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +24,9 @@ public class TeacherController {
 		this.service = service;
 		this.moduleService = moduleService;
 	}
-
+ 
 	@PostMapping("/teacher")
-	public Teacher addTeacher(@RequestBody Teacher teacher)
-			throws EmptyModuleListException, InvalidModuleCodeException {
+	public Teacher addTeacher(@RequestBody Teacher teacher) throws EmptyModuleListException {
 
 		List<Module> theList = teacher.getModules();
 		this.moduleService.verifyModuleCode(theList);
@@ -36,13 +34,13 @@ public class TeacherController {
 
 	}
 
-	@GetMapping("/teacher")
+	@GetMapping("/teachers")
 	public List<Teacher> getAllTeachers() {
 		return this.service.getAllTeachers();
 	}
 
-	@GetMapping("/teacher/{id}")
-	public Teacher getOneTeacher(@PathVariable(value = "id") Long id) {
+	@GetMapping("/teacher/{teacherId}")
+	public Teacher getTeacherById(@PathVariable(value = "teacherId") Long id) {
 
 		return this.service.getTeacherById(id);
 	}
@@ -53,9 +51,14 @@ public class TeacherController {
 
 	}
 
-	@DeleteMapping("/teacher/{id}")
-	public void deleteTeacherById(@PathVariable Long id) {
-		this.service.deleteTeacherById(id);
+	@DeleteMapping("/teacher/{teacherId}")
+	public String deleteTeacherById(@PathVariable(value ="teacherId") Long id) {
+		return this.service.deleteTeacherById(id);
+	}
+
+	@DeleteMapping("/deleteAllTeachers")
+	public String deleteAllTeachers() {
+		return this.service.deleteAllTeachers();
 	}
 
 }

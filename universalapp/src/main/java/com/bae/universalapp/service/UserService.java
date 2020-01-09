@@ -17,22 +17,18 @@ public class UserService {
     private UserRepo userRepo;
 
     public UserService(UserRepo repo) {
-
         this.userRepo = repo;
     }
 
     public User addUser(User user) {
-
         return this.userRepo.save(user);
     }
 
     public User getUserById(Long id) {
-
         return this.userRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     public List<User> getAllUsers() {
-
         return this.userRepo.findAll();
     }
 
@@ -42,7 +38,7 @@ public class UserService {
         toUpdate.setEmail(user.getEmail());
         toUpdate.setPassword(user.getPassword());
 
-        return toUpdate;
+        return this.userRepo.save(toUpdate);
     }
 
     public String deleteUserById(Long id) {
@@ -54,8 +50,21 @@ public class UserService {
         if (userCheck) {
             return "User has not been deleted";
         }
-        return "User deleted sucessfully";
+        return "User deleted successfully";
 
+    }
+
+    public String deleteAllUsers() {
+
+        this.userRepo.truncateUserTable();
+        this.userRepo.flush();
+
+        boolean entityCheck = this.userRepo.findAll().isEmpty();
+
+        if (entityCheck) {
+            return "User table is not empty";
+        }
+        return "User table has been emptied successfully";
     }
 
 }

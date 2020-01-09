@@ -2,6 +2,8 @@ package com.bae.universalapp.persistence.domain;
 
 import javax.persistence.Entity;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 
 import javax.persistence.Id;
@@ -18,8 +20,8 @@ public class Lecture {
 
     private String lectureName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Module module;
+    // @ManyToOne
+    // private Module module;
 
     public Lecture() {
 
@@ -27,20 +29,6 @@ public class Lecture {
 
     public Lecture(String lectureName) {
         this.lectureName = lectureName;
-    }
-
-    /**
-     * @param module the module to set
-     */
-    public void setModule(Module module) {
-        this.module = module;
-    }
-
-    /**
-     * @return the module
-     */
-    public Module getModule() {
-        return module;
     }
 
     /**
@@ -71,4 +59,18 @@ public class Lecture {
         return lectureName;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj) {
+            return true;
+        }
+        if (Objects.isNull(obj)) {
+            return false;
+        }
+        if (this.getClass() == obj.getClass()) {
+            return true;
+        }
+        return super.equals(obj);
+    }
 }

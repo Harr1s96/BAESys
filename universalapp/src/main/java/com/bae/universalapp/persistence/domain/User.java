@@ -1,5 +1,7 @@
 package com.bae.universalapp.persistence.domain;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 
 /**
@@ -9,7 +11,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String email;
     private String password;
@@ -46,5 +48,19 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
+        if (Objects.isNull(obj)) {
+            return false;
+        }
+        if (this.getClass() == obj.getClass()) {
+            return true;
+        }
+        return super.equals(obj);
+    }    
 }
