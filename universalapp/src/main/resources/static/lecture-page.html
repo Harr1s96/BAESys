@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+    />
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Lectures Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- custom internal css for personal touch -->
+    <link href="/css/main.css" type="text/css" rel="stylesheet"/>
+
+    <!-- loading the axios library from a CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <style>
+      .list-group h1 {
+        background-color: cornflowerblue;
+      }
+    </style>
+  </head>
+
+  <body onload="showLectures();">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">UNIVERSAL</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="profile-page.html"
+                >My Profile
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Lectures</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="input-field">
+    
+      <input type="text" id="lecture" placeholder="Enter Lecture">
+      
+      <button id="submit" onclick="postData();">Submit</button>
+  
+  </div>
+
+  <div id="lecture-list">
+    <ul id="list-group" class="list-group">
+      <h1>Lectures</h1>
+    </ul>
+  </div>
+
+    <div id="list-div"></div>
+
+    <script>
+      "use strict"
+      
+      const lectureList = document.getElementById("lecture-list");
+      const listGroup = document.getElementById("list-group");
+      const mainDiv = document.getElementById("list-div");
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('id');
+  
+      const lectureData = axios.get("http://localhost:8081/teachers/modules/" + myParam)
+          .then(response => {console.log(response.data); 
+                          return response.data;});
+
+      function postData() {
+
+        let lectureName = document.getElementById("lecture").value;
+        console.log()
+
+        const toPost = [{"lectureName": lectureName}]
+
+        axios.put("http://localhost:8081/module/" + myParam, toPost)
+            .then(response => {console.log(response); location.reload();})
+      }
+
+    function showLectures() {
+      
+      lectureData.then(data => {
+        let listOfLectures = data.lectures;
+        for (let lecture of listOfLectures) {
+          const listElement = document.createElement("li");
+          listElement.className = "list-group-item list-group-item-action";
+          listElement.innerHTML = lecture.lectureName;
+          listGroup.appendChild(listElement);
+        }
+      });
+    }
+    
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.slim.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

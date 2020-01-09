@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body onload="overrideContextMenu();">
+
+    <!-- <div class="menu">
+        <ul id="list-group" class="menu-options">
+          <li class="menu-option">Back</li>
+          <li class="menu-option">Reload</li>
+          <li class="menu-option">Save</li>
+          <li class="menu-option">Save As</li>
+          <li class="menu-option">Inspect</li>
+        </ul>
+    </div> -->
+  
+
+    <div id="menu" class="modal">
+        <menu type="context" id="mymenu">
+            <menuitem label="Update"></menuitem>
+            <menuitem label="Delete"></menuitem>
+        </menu> 
+    </div>
+    
+    <div id="test-list">
+        <ul id="list-group" class="list-group" onload="overrideContextMenu();">
+            <li class="list-item">OPTION 1</li>
+            <li class="list-item">option 2</li>
+            <li class="list-item">oPTION 2</li>
+            <li class="list-item">oPTION 3</li>
+            <li class="list-item">oPTION 4</li>
+        </ul>
+    </div>
+    <script>
+          "use strict"
+
+        //   const menu = document.querySelector(".menu");
+
+        //   const toggleMenu = command => {
+        //     menu.style.display = command === "show" ? "block" : "none";};
+
+          function overrideContextMenu() {
+
+            let listElems = document.getElementById("list-group").getElementsByTagName("li");
+
+            for (let i = 0; i < listElems.length; i++) {
+
+                listElems[i].addEventListener("contextmenu", function(e) {alert("allow it fam"); e.preventDefault()})
+            }
+          }
+    </script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
