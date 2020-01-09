@@ -49,7 +49,7 @@ public class ModuleService {
     public Module updateLecturesByModuleId(Long id, List<Lecture> lectureList) {
         
         Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
-        toUpdate.setLectures(lectureList);
+        toUpdate.getLectures().addAll(lectureList);
 
         return this.moduleRepo.saveAndFlush(toUpdate);
     }

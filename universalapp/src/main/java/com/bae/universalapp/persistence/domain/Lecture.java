@@ -20,6 +20,9 @@ public class Lecture {
 
     private String lectureName;
 
+    // @ManyToOne
+    // private Module module;
+
     public Lecture() {
 
     }
