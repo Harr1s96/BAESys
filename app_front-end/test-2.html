@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- loading the axios library from a CDN -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+    <button onclick="showTeachers();"> LOL </button>
+
+    <script>
+
+        const teacherData = axios.get("http://localhost:8081/teachers")
+                            .then(response => {return response.data});
+
+        function showTeachers() {
+
+            teacherData.then(data => {
+                for (let i = 0; i < 4; i++) {
+                    if (data[i].id === 1) {
+                        for (let m of data[i].modules) {
+                            console.log(m.moduleCode);
+                        }
+                    }
+                }
+            });
+        }
+
+        // function getTeachers() { 
+            
+        //     return axios.get("http://localhost:8081/teachers");
+        //     // .then((response) => {showTeachers(response.data);})
+        //     // .catch((error) => {console.error(error);});
+        // }
+
+
+        // for (let t of teacherData) {
+            //     console.log(t);
+            // }
+    
+    </script>
+
+</body>
+
+</html>

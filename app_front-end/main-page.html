@@ -1,135 +1,87 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+  
+<head>
+    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"/>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <title>Main Page</title>
+  <title>Main Page</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- custom internal css for personal touch -->
-    <link href="main.css" type="text/css" rel="stylesheet" />
-  </head>
+  <!-- custom internal css for personal touch -->
+  <link href="main.css" type="text/css" rel="stylesheet" />
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="main-page.html">UNIVERSAL</a>
+  <!-- loading the axios library from a CDN -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <style>
+    #list-div {
+      position: absolute;
+      top: 200px;
+      left: 1250px;
+    }
+    #dropdown {
+      width: 500px;
+      text-align: center;
+      font-size: xx-large;
+    }
+  </style>
+  
+</head>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+<body onload="showTeachers();">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+    
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="main-page.html">UNIVERSAL</a>
+
+      <button class="navbar-toggler" 
+        type="button" 
+        data-toggle="collapse" 
+        data-target="#navbarResponsive" 
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive"> 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="profile-page.html"
-                >My Profile
-                <span class="sr-only">(current)</span>
-              </a>
+              <a class="nav-link" href="profile-page.html"> My Profile <span class="sr-only">(current)</span></a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="main-page.html">Lectures</a>
             </li>
-          </ul>
+          </ul>    
         </div>
-      </div>
-    </nav>
+      
+    </div>
+    
+  </nav>
 
-    <ul class="list-group">
+  <div id="teacher-list">
+    <ul id="list-group" class="list-group">
       <h1>Lecturers</h1>
-      <li
-        class="list-group-item list-group-item-action"
-        onclick="getModules();"
-      >
-        Dr. Who
-      </li>
-      <li class="list-group-item list-group-item-action">
-        Dapibus ac facilisis in
-      </li>
-      <li class="list-group-item list-group-item-action">Morbi leo risus</li>
-      <li class="list-group-item list-group-item-action">
-        Porta ac consectetur ac
-      </li>
-      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
-      <li class="list-group-item list-group-item-action">
-        Porta ac consectetur ac
-      </li>
-      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
-      <li class="list-group-item list-group-item-action">
-        Porta ac consectetur ac
-      </li>
-      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
     </ul>
+  </div>
 
     <div id="list-div"></div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.slim.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="main-page.js"></script>
 
-    <script>
-      "use strict";
-      const mainDiv = document.getElementById("list-div");
-      // const listElements = document.getElementsByTagName("li");
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.slim.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-      function getModules() {
-        const dropList = document.createElement("div");
-        dropList.className = "dropdown";
+</body>
 
-        const dropButton = document.createElement("button");
-        dropButton.className = "btn btn-secondary dropdown-toggle";
-        dropButton.id = "dropdownMenuButton";
-        dropButton.innerText = "Select Module";
-        dropButton.onclick = getDropDown();
-
-        const dropMenu = document.createElement("div");
-        dropMenu.className = "dropdown-menu";
-
-        dropList.appendChild(dropButton);
-        dropList.appendChild(dropMenu);
-        mainDiv.appendChild(dropList);
-      }
-
-      function getDropDown() {
-        // for (let i = 0; i <= 5; i++) {
-        //   const aElement = document.createElement("a");
-        //   aElement.className = "dropdown-item";
-        //   aElement.href = "#";
-        //   aElement.innerText = "10";
-        //   dropMenu.appendChild(aElement);
-        // }
-        // mainDiv.appendChild(dropList);
-      }
-    </script>
-  </body>
 </html>
-
-<!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div> -->
