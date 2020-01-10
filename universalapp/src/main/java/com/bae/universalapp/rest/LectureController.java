@@ -31,16 +31,16 @@ public class LectureController {
         return this.service.getAllLectures();
     }
 
-    // @GetMapping("lecture/{lectureId}")
-    // public List<Lecture> getAllLecturesById(List<Long> id) {
-    //     return this.service.getAllLecturesById(id);
-    // }
-
     @GetMapping("/lecture/{lectureId}")
     public Lecture getLectureById(@PathVariable(value = "lectureId") Long id) {
 
         return this.service.getLectureById(id);
     }
+
+    // @GetMapping("/lecture")
+    // public Lecture getLectureByName(@RequestBody String lectureName) {
+    //     return 
+    // }
 
     @PutMapping("/lecture")
     public Lecture updateLectureById(@PathParam("id") Long id, @RequestBody Lecture lecture) {

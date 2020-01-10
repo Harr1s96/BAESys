@@ -139,9 +139,6 @@ public class ModuleControllerIntegrationTest {
         Lecture lectureOne = new Lecture("lecture 1");
         Lecture lectureTwo = new Lecture("lecture 2");
 
-        /**
-         *  contributed by James Kiesslinger
-         */
         lectureList.add(this.lectureRepo.save(lectureOne)); 
         lectureList.add(this.lectureRepo.save(lectureTwo)); 
         

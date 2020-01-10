@@ -1,4 +1,11 @@
 "use strict"
+
+const menu = document.getElementById("menu");
+menu.style.display = "none";
+
+const updateButton = document.getElementById("update-button");
+const deleteButton = document.getElementById("delete-button");
+
       
 const lectureList = document.getElementById("lecture-list");
 const listGroup = document.getElementById("list-group");
@@ -24,15 +31,49 @@ function postData() {
 function showLectures() {
 
     lectureData.then(data => {
-        let listOfLectures = data.lectures;
-
-        for (let lecture of listOfLectures) {
+        
+        for (let lecture of data.lectures) {
             
             const listElement = document.createElement("li");
             listElement.className = "list-group-item list-group-item-action";
-            
             listElement.innerHTML = lecture.lectureName;
+            
+            listElement.oncontextmenu = (function (event) {
+                event.preventDefault();
+                menu.style.display = "block";
+                updateButton.value = axios.get("http://localhost:8081/");
+                deleteButton.value = data.id;
+            });
+            
+            window.onclick = function(event) {
+                if (event.target == menu) {
+                    menu.style.display = "none";
+                }
+            }
+
             listGroup.appendChild(listElement);
         }
     });
+}
+
+function updateLecture(elementId) {
+
+    const toUpdate = document.getElementById("update-lecture").value;
+    const data = {"lectureName": toUpdate}
+    axios.put("http://localhost:8081/lecture?id=" + elementId, data)
+        .then(response => {
+            console.log(response);
+            updateButton.value = " "; 
+            location.reload();
+        });
+}
+
+function deleteLecture(elementId) {
+
+    axios.delete("http://localhost:8081/lecture/" + elementId)
+        .then(response => {
+            console.log(response);
+            deleteButton.value = " ";
+            location.reload();
+        });
 }

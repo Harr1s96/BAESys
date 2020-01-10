@@ -29,6 +29,18 @@ public class LectureService {
         return this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
+    // public Lecture getLectureByName(String lectureName) {
+        
+    //     List<Lecture> lectureList = getAllLectures();
+    //     Example<Lecture> example = Example.of()
+        
+    //     for (Lecture lecture : lectureList) {
+    //         if (lectureName.equals(lecture.getLectureName())) {
+    //             return this.lectureRepo.findOne(lecture);
+    //         }
+    //     }
+    // }
+
     public List<Lecture> getAllLectures() {
         return this.lectureRepo.findAll();
     }

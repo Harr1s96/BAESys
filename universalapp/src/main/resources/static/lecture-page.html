@@ -25,6 +25,16 @@
       .list-group h1 {
         background-color: cornflowerblue;
       }
+      #submit {
+        background-color: cornflowerblue;
+      }
+      #input-field #lecture {
+        margin: 0, auto;
+        width: 300px;
+      }
+      #modal-body #update-lecture {
+        width: 300px;
+      }
     </style>
   </head>
 
@@ -41,8 +51,7 @@
           data-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -69,6 +78,24 @@
       
       <button id="submit" onclick="postData();">Submit</button>
   
+  </div>
+
+  <div id="menu" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Would you like to update or delete?</h4>
+        </div>
+        <div id="modal-body" class="modal-body">
+          <input type="text" id="update-lecture" placeholder="Enter Lecture">
+          <!-- <input type="text" id="update-id" hidden> -->
+        </div>
+        <div class="modal-footer">
+          <button id="update-button" type="button" class="btn btn-success" onclick="updateLecture(this.value);">Update</button>
+          <button id="delete-button" type="button" class="btn btn-danger" onclick="deleteLecture(this.value);">Delete</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="lecture-list">

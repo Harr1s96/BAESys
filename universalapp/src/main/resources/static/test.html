@@ -8,29 +8,55 @@
 
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+    </style>
 </head>
 <body onload="overrideContextMenu();">
-
-    <!-- <div class="menu">
-        <ul id="list-group" class="menu-options">
-          <li class="menu-option">Back</li>
-          <li class="menu-option">Reload</li>
-          <li class="menu-option">Save</li>
-          <li class="menu-option">Save As</li>
-          <li class="menu-option">Inspect</li>
-        </ul>
-    </div> -->
   
+    <!-- <div id="menu" class="modal">
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div> -->
 
-    <div id="menu" class="modal">
-        <menu type="context" id="mymenu">
-            <menuitem label="Update"></menuitem>
-            <menuitem label="Delete"></menuitem>
-        </menu> 
+    <div id="menu" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div id="test-list">
-        <ul id="list-group" class="list-group" onload="overrideContextMenu();">
+        <ul id="list-group" class="list-group">
             <li class="list-item">OPTION 1</li>
             <li class="list-item">option 2</li>
             <li class="list-item">oPTION 2</li>
@@ -41,10 +67,8 @@
     <script>
           "use strict"
 
-        //   const menu = document.querySelector(".menu");
-
-        //   const toggleMenu = command => {
-        //     menu.style.display = command === "show" ? "block" : "none";};
+          const menu = document.getElementById("menu");
+          menu.style.display = "none";
 
           function overrideContextMenu() {
 
@@ -52,7 +76,15 @@
 
             for (let i = 0; i < listElems.length; i++) {
 
-                listElems[i].addEventListener("contextmenu", function(e) {alert("allow it fam"); e.preventDefault()})
+                listElems[i].oncontextmenu = (function (event) {
+                    menu.style.display = "block";
+                    event.preventDefault();
+                });
+                window.onclick = function(event) {
+                    if (event.target == menu) {
+                        menu.style.display = "none";
+                    }
+                }                
             }
           }
     </script>
