@@ -41,8 +41,8 @@ function showLectures() {
             listElement.oncontextmenu = (function (event) {
                 event.preventDefault();
                 menu.style.display = "block";
-                updateButton.value = axios.get("http://localhost:8081/");
-                deleteButton.value = data.id;
+                updateButton.value = lecture.id;
+                deleteButton.value = lecture.id;
             });
             
             window.onclick = function(event) {
