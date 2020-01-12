@@ -34,6 +34,8 @@ public class ModuleServiceUnitTest {
 
     private List<Module> moduleList;
 
+    // private List<Lecture> lectureList;
+
     private Module testModule;
 
     private Module testModuleWithId;
@@ -44,6 +46,8 @@ public class ModuleServiceUnitTest {
     public void init() {
 
         this.moduleList = new ArrayList<>();
+        // this.lectureList = new ArrayList<>();
+        
         this.testModule = new Module("Intro to group theory", "CHEM 382");
         this.testModuleWithId = new Module("Quantum Chemistry", "CHEM 335");
 
@@ -106,8 +110,8 @@ public class ModuleServiceUnitTest {
         Module toUpdate = new Module("Statistical Thermodynamics", "CHEM 336");
         Lecture lectureOne = new Lecture("lecture 1");
         Lecture lectureTwo = new Lecture("lecture 2");
+        
         List<Lecture> lectureList = new ArrayList<>();
-
         lectureList.add(lectureOne);
         lectureList.add(lectureTwo);
 
@@ -117,7 +121,7 @@ public class ModuleServiceUnitTest {
 
         when(this.moduleRepo.save(toUpdate)).thenReturn(toUpdate);
 
-        assertEquals(toUpdate, this.moduleService.updateLecturesByModuleId(id, lectureList));
+        assertEquals(testModuleWithId.toString(), this.moduleService.updateLecturesByModuleId(id, lectureList));
 
         verify(this.moduleRepo, times(2)).findById(id);
         verify(this.moduleRepo, times(1)).save(toUpdate);

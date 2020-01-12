@@ -55,7 +55,7 @@ public class LectureService {
 
     public String deleteAllLectures() {
         
-        this.lectureRepo.truncateLectureTable();
+        this.lectureRepo.deleteLectureTable();
         this.lectureRepo.flush();
 
         boolean entityCheck = this.lectureRepo.findAll().isEmpty();

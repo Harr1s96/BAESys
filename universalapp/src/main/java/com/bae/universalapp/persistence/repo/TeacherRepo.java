@@ -18,6 +18,6 @@ public interface TeacherRepo extends JpaRepository<Teacher, Long>, QueryByExampl
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM teacher", nativeQuery = true)
-    void truncateTeacherTable();
+    void deleteTeacherTable();
 
 }

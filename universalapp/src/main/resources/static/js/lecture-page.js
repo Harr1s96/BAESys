@@ -63,7 +63,7 @@ function updateLecture(elementId) {
     axios.put("http://localhost:8081/lecture?id=" + elementId, data)
         .then(response => {
             console.log(response);
-            updateButton.value = " "; 
+            updateButton.value = ""; 
             location.reload();
         });
 }
@@ -73,7 +73,7 @@ function deleteLecture(elementId) {
     axios.delete("http://localhost:8081/lecture/" + elementId)
         .then(response => {
             console.log(response);
-            deleteButton.value = " ";
+            deleteButton.value = "";
             location.reload();
         });
 }

@@ -69,7 +69,7 @@ public class ModuleService {
 
     public String deleteAllModules() {
 
-        this.moduleRepo.truncateModuleTable();
+        this.moduleRepo.deleteModuleTable();
         this.moduleRepo.flush();
 
         boolean entityCheck = this.moduleRepo.findAll().isEmpty();

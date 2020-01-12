@@ -17,6 +17,6 @@ public interface LectureRepo extends JpaRepository<Lecture, Long>, QueryByExampl
     @Modifying
     @Transactional
     @Query(value = "delete from lecture", nativeQuery = true)
-    void truncateLectureTable();
+    void deleteLectureTable();
 
 }

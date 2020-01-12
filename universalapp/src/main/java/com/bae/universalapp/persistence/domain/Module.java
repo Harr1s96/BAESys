@@ -31,6 +31,12 @@ public class Module {
         this.moduleCode = moduleCode;
     }
 
+    // public Module(String moduleName, String moduleCode, List<Lecture> lectures) {
+    //     this.moduleCode = moduleCode;
+    //     this.moduleName = moduleName;
+    //     this.lectures = lectures;
+    // }
+
     /**
      * @param lectures the lectures to set
      */
@@ -42,7 +48,7 @@ public class Module {
      * @return the lectures
      */
     public List<Lecture> getLectures() {
-        return lectures;
+        return this.lectures;
     }
 
     /**
