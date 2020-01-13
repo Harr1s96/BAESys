@@ -1,148 +1,149 @@
-// package com.bae.universalapp.test.service;
+package com.bae.universalapp.test.service;
 
-// import static org.junit.Assert.assertEquals;
-// import static org.mockito.Mockito.times;
-// import static org.mockito.Mockito.verify;
-// import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-// import java.util.ArrayList;
-// import java.util.List;
-// import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-// import com.bae.universalapp.persistence.domain.Lecture;
-// import com.bae.universalapp.persistence.domain.Module;
-// import com.bae.universalapp.persistence.repo.ModuleRepo;
-// import com.bae.universalapp.service.EmptyModuleListException;
-// import com.bae.universalapp.service.InvalidModuleCodeException;
-// import com.bae.universalapp.service.ModuleService;
+import com.bae.universalapp.persistence.domain.Lecture;
+import com.bae.universalapp.persistence.domain.Module;
+import com.bae.universalapp.persistence.repo.ModuleRepo;
+import com.bae.universalapp.service.EmptyModuleListException;
+import com.bae.universalapp.service.InvalidModuleCodeException;
+import com.bae.universalapp.service.ModuleService;
 
-// import org.junit.Before;
-// import org.junit.Test;
-// import org.junit.runner.RunWith;
-// import org.mockito.InjectMocks;
-// import org.mockito.Mock;
-// import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.test.context.junit4.SpringRunner;
 
-// @RunWith(SpringRunner.class)
-// public class ModuleServiceUnitTest {
+@RunWith(SpringRunner.class)
+public class ModuleServiceUnitTest {
 
-//     @InjectMocks
-//     private ModuleService moduleService;
+    @InjectMocks
+    private ModuleService moduleService;
 
-//     @Mock
-//     private ModuleRepo moduleRepo;
+    @Mock
+    private ModuleRepo moduleRepo;
 
-//     private List<Module> moduleList;
+    private List<Module> moduleList;
 
-//     private Module testModule;
+    private Module testModule;
 
-//     private Module testModuleWithId;
+    private Module testModuleWithId;
 
-//     private final Long id = 2L;
+    private final Long id = 2L;
 
-//     @Before
-//     public void init() {
+    @Before
+    public void init() {
 
-//         this.moduleList = new ArrayList<>();
-//         this.testModule = new Module("Intro to group theory", "CHEM 382");
-//         this.testModuleWithId = new Module("Quantum Chemistry", "CHEM 335");
+        this.moduleList = new ArrayList<>();
+        
+        this.testModule = new Module("Intro to group theory", "CHEM 382");
+        this.testModuleWithId = new Module("Quantum Chemistry", "CHEM 335");
 
-//         this.moduleList.add(testModule);
-//         this.moduleList.add(testModuleWithId);
-//         this.testModuleWithId.setId(this.id);
-//     }
+        this.moduleList.add(testModule);
+        this.moduleList.add(testModuleWithId);
+        this.testModuleWithId.setId(this.id);
+    }
 
-//     @Test
-//     public void addModuleTest() {
+    @Test
+    public void addModuleTest() {
 
-//         when(this.moduleRepo.save(testModule)).thenReturn(testModule);
+        when(this.moduleRepo.save(testModule)).thenReturn(testModule);
 
-//         assertEquals(this.testModule, this.moduleService.addModule(testModule));
+        assertEquals(this.testModule, this.moduleService.addModule(testModule));
 
-//         verify(this.moduleRepo, times(1)).save(this.testModule);
-//     }
+        verify(this.moduleRepo, times(1)).save(this.testModule);
+    }
 
-//     @Test
-//     public void getModuleByIdTest() {
+    @Test
+    public void getModuleByIdTest() {
 
-//         when(this.moduleRepo.findById(this.id)).thenReturn(Optional.of(this.testModuleWithId));
+        when(this.moduleRepo.findById(this.id)).thenReturn(Optional.of(this.testModuleWithId));
 
-//         assertEquals(this.testModuleWithId, this.moduleService.getModuleById(id));
+        assertEquals(this.testModuleWithId, this.moduleService.getModuleById(id));
 
-//         verify(this.moduleRepo, times(1)).findById(id);
-//     }
+        verify(this.moduleRepo, times(1)).findById(id);
+    }
 
-//     @Test
-//     public void getAllModulesTest() {
+    @Test
+    public void getAllModulesTest() {
 
-//         when(this.moduleRepo.findAll()).thenReturn(this.moduleList);
+        when(this.moduleRepo.findAll()).thenReturn(this.moduleList);
 
-//         assertEquals(2, this.moduleService.getAllModules().size());
+        assertEquals(2, this.moduleService.getAllModules().size());
 
-//         verify(this.moduleRepo, times(1)).findAll();
-//     }
+        verify(this.moduleRepo, times(1)).findAll();
+    }
 
-//     @Test
-//     public void updateModuleByIdTest() {
+    @Test
+    public void updateModuleByIdTest() {
+        
+        Module newModule = new Module("Statistical Thermodynamics", "CHEM 336");
+        Module updatedModule = new Module(newModule.getModuleCode(), newModule.getModuleName());
+        updatedModule.setId(this.testModuleWithId.getId());
 
-//         Module updatedModule = new Module("Statistical Thermodynamics", "CHEM 336");
+        when(this.moduleRepo.findById(this.testModuleWithId.getId())).thenReturn(Optional.of(this.testModuleWithId));
+        
+        when(this.moduleRepo.save(this.testModuleWithId)).thenReturn(updatedModule);
 
-//         when(this.moduleRepo.findById(id)).thenReturn(Optional.of(testModuleWithId));
+        assertEquals(updatedModule, this.moduleService.updateModuleById(newModule, this.testModuleWithId.getId()));
 
-//         assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
+        verify(this.moduleRepo, times(1)).findById(this.testModuleWithId.getId());
+        verify(this.moduleRepo, times(1)).save(this.testModuleWithId);
 
-//         when(this.moduleRepo.save(updatedModule)).thenReturn(updatedModule);
+    }
 
-//         assertEquals(updatedModule, this.moduleService.updateModuleById(updatedModule, id));
+    @Test
+    public void updateLecturesByModuleIdTest() {
 
-//         verify(this.moduleRepo, times(2)).findById(id);
-//         verify(this.moduleRepo, times(1)).save(updatedModule);
+        Module toUpdate = new Module("Quantum Mechanics", "CHEM 335");
+        Lecture lectureOne = new Lecture("lecture 1");
+        Lecture lectureTwo = new Lecture("lecture 2");
+        
+        List<Lecture> lectureList = new ArrayList<>();
+        lectureList.add(lectureOne);
+        lectureList.add(lectureTwo);
 
-//     }
+        when(this.moduleRepo.findById(id)).thenReturn(Optional.of(this.testModuleWithId));
 
-//     @Test
-//     public void updateLecturesByModuleIdTest() {
+        assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
 
-//         Module toUpdate = new Module("Statistical Thermodynamics", "CHEM 336");
-//         Lecture lectureOne = new Lecture("lecture 1");
-//         Lecture lectureTwo = new Lecture("lecture 2");
-//         List<Lecture> lectureList = new ArrayList<>();
+        when(this.moduleRepo.save(toUpdate)).thenReturn(testModuleWithId);
 
-//         lectureList.add(lectureOne);
-//         lectureList.add(lectureTwo);
+        assertEquals(this.testModuleWithId, this.moduleService.updateLecturesByModuleId(this.id, lectureList));
 
-//         when(this.moduleRepo.findById(id)).thenReturn(Optional.of(testModuleWithId));
+        verify(this.moduleRepo, times(2)).findById(id);
+        verify(this.moduleRepo, times(1)).save(toUpdate);
 
-//         assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
+    }
 
-//         when(this.moduleRepo.save(toUpdate)).thenReturn(toUpdate);
+    @Test
+    public void deleteModuleByIdTest() {
 
-//         assertEquals(toUpdate, this.moduleService.updateLecturesByModuleId(id, lectureList));
+        when(this.moduleRepo.existsById(id)).thenReturn(true);
 
-//         verify(this.moduleRepo, times(2)).findById(id);
-//         verify(this.moduleRepo, times(1)).save(toUpdate);
+        assertEquals("Module has not been deleted", this.moduleService.deleteModuleById(id));
 
-//     }
+        verify(this.moduleRepo, times(1)).existsById(id);
+        verify(this.moduleRepo, times(1)).deleteById(id);
 
-//     @Test
-//     public void deleteModuleByIdTest() {
+    }
 
-//         when(this.moduleRepo.existsById(id)).thenReturn(true);
+    @Test
+    public void verifyModuleCodeTest() throws InvalidModuleCodeException, EmptyModuleListException {
 
-//         assertEquals("Module has not been deleted", this.moduleService.deleteModuleById(id));
+        Module moduleCodeTest = new Module("moduleName", "CHEM 222");
+        this.moduleList.add(moduleCodeTest);
 
-//         verify(this.moduleRepo, times(1)).existsById(id);
-//         verify(this.moduleRepo, times(1)).deleteById(id);
+        assertEquals(true, this.moduleService.verifyModuleCode(moduleList));
+    }
 
-//     }
-
-//     @Test
-//     public void verifyModuleCodeTest() throws InvalidModuleCodeException, EmptyModuleListException {
-
-//         Module moduleCodeTest = new Module("moduleName", "CHEM 222");
-//         this.moduleList.add(moduleCodeTest);
-
-//         assertEquals(true, this.moduleService.verifyModuleCode(moduleList));
-//     }
-
-// }
+}

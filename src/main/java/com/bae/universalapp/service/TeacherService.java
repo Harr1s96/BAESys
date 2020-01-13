@@ -2,6 +2,7 @@ package com.bae.universalapp.service;
 
 import java.util.List;
 
+import com.bae.universalapp.persistence.domain.Module;
 import com.bae.universalapp.persistence.domain.Teacher;
 import com.bae.universalapp.persistence.repo.TeacherRepo;
 
@@ -43,6 +44,14 @@ public class TeacherService {
         toUpdate.setLastName(teacher.getLastName());
 
         return this.teacherRepo.save(toUpdate);
+    }
+
+    public Teacher updateModulesByTeacherId(Long id, List<Module> moduleList) {
+        
+        Teacher toUpdate = this.teacherRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
+        toUpdate.getModules().addAll(moduleList);
+
+        return this.teacherRepo.saveAndFlush(toUpdate);
     }
 
     public String deleteTeacherById(Long id) {

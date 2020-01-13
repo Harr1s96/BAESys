@@ -33,10 +33,6 @@ public class LectureService {
         return this.lectureRepo.findAll();
     }
 
-    // public List<Lecture> getAllLecturesById(List<Long> id) {
-    //     return this.lectureRepo.findAllById(id);
-    // }
-
     public Lecture updateLectureById(Lecture lecture, Long id) {
 
         Lecture toUpdate = this.lectureRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
@@ -59,7 +55,7 @@ public class LectureService {
 
     public String deleteAllLectures() {
         
-        this.lectureRepo.truncateLectureTable();
+        this.lectureRepo.deleteLectureTable();
         this.lectureRepo.flush();
 
         boolean entityCheck = this.lectureRepo.findAll().isEmpty();

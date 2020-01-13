@@ -2,6 +2,7 @@ package com.bae.universalapp.persistence.domain;
 
 import javax.persistence.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Module {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "module_id")
-    private List<Lecture> lectures;
+    private List<Lecture> lectures = new ArrayList<>();
 
     public Module() {
 
@@ -42,7 +43,7 @@ public class Module {
      * @return the lectures
      */
     public List<Lecture> getLectures() {
-        return lectures;
+        return this.lectures;
     }
 
     /**
@@ -87,19 +88,68 @@ public class Module {
         return moduleCode;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+   @Override
+   public boolean equals(Object obj) {
+       
+       if (this == obj) {
+           return true;
+       }
+       if (null == obj) {
+           return false;
+       }
+       if (this.getClass() == obj.getClass()) {
+           return true;
+       }
+       return super.equals(obj);
+   }
+
+	// @Override
+	// public boolean equals(Object obj) {
         
-        if (this == obj) {
-            return true;
-        }
-        if (null == obj) {
-            return false;
-        }
-        if (this.getClass() == obj.getClass()) {
-            return true;
-        }
-        return super.equals(obj);
+    //     if (this == obj)
+	// 		return true;
+        
+    //     if (obj == null)
+	// 		return false;
+        
+    //     if (getClass() != obj.getClass())
+	// 		return false;
+        
+    //     Module other = (Module) obj;
+	// 	if (id == null) {
+	// 		if (other.id != null)
+	// 			return false;
+    //     } 
+    //     else if (!id.equals(other.id))
+	// 		return false;
+        
+    //     if (lectures == null) {
+	// 		if (other.lectures != null)
+	// 			return false;
+    //     } 
+    //     else if (!lectures.equals(other.lectures))
+	// 		return false;
+        
+    //     if (moduleCode == null) {
+	// 		if (other.moduleCode != null)
+	// 			return false;
+    //     } 
+    //     else if (!moduleCode.equals(other.moduleCode))
+	// 		return false;
+        
+    //     if (moduleName == null) {
+	// 		if (other.moduleName != null)
+	// 			return false;
+    //     } 
+    //     else if (!moduleName.equals(other.moduleName))
+	// 		return false;
+        
+    //     return true;
+	// }
+
+	@Override
+    public String toString() {
+        return "Module [id=" + this.id + ", moduleCode=" + this.moduleCode + ", moduleName=" + this.moduleName + ", lectures=" + this.lectures + "]";
     }
     
 }

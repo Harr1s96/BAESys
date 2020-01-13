@@ -51,7 +51,7 @@ public class ModuleService {
         Module toUpdate = this.moduleRepo.findById(id).orElseThrow(ResourceNotFoundException::new);
         toUpdate.getLectures().addAll(lectureList);
 
-        return this.moduleRepo.saveAndFlush(toUpdate);
+        return this.moduleRepo.save(toUpdate);
     }
 
     public String deleteModuleById(Long id) {
@@ -69,7 +69,7 @@ public class ModuleService {
 
     public String deleteAllModules() {
 
-        this.moduleRepo.truncateModuleTable();
+        this.moduleRepo.deleteModuleTable();
         this.moduleRepo.flush();
 
         boolean entityCheck = this.moduleRepo.findAll().isEmpty();

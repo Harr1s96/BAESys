@@ -18,6 +18,6 @@ public interface ModuleRepo extends JpaRepository<Module, Long>, QueryByExampleE
     @Modifying
     @Transactional
     @Query(value = "delete from module", nativeQuery = true)
-    void truncateModuleTable();
+    void deleteModuleTable();
 
 }
