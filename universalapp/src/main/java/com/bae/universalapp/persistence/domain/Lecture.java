@@ -1,11 +1,7 @@
 package com.bae.universalapp.persistence.domain;
 
 import javax.persistence.Entity;
-
-import java.util.Objects;
-
 import javax.persistence.*;
-
 import javax.persistence.Id;
 
 /**
@@ -19,9 +15,6 @@ public class Lecture {
     private Long id;
 
     private String lectureName;
-
-    // @ManyToOne
-    // private Module module;
 
     public Lecture() {
 
@@ -59,18 +52,54 @@ public class Lecture {
         return lectureName;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+	@Override
+	public boolean equals(Object obj) {
         
-        if (this == obj) {
-            return true;
-        }
-        if (Objects.isNull(obj)) {
-            return false;
-        }
-        if (this.getClass() == obj.getClass()) {
-            return true;
-        }
-        return super.equals(obj);
+        if (this == obj)
+			return true;
+        
+        if (obj == null)
+			return false;
+        
+        if (getClass() != obj.getClass())
+			return false;
+        
+        Lecture other = (Lecture) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+        } 
+        else if (!id.equals(other.id))
+			return false;
+        
+        if (lectureName == null) {
+			if (other.lectureName != null)
+				return false;
+        } 
+        else if (!lectureName.equals(other.lectureName))
+			return false;
+        
+        return true;
     }
+    
+    @Override
+    public String toString() {
+        return "Lecture [id=" + this.id + ", lectureName=" + this.lectureName + "]";
+    }
+    
+
+//    @Override
+//    public boolean equals(Object obj) {
+//        
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (Objects.isNull(obj)) {
+//            return false;
+//        }
+//        if (this.getClass() == obj.getClass()) {
+//            return true;
+//        }
+//        return super.equals(obj);
+//    }
 }

@@ -1,10 +1,14 @@
 "use strict";
 
-const menu = document.getElementById("menu");
-menu.style.display = "none";
+const moduleMenu = document.getElementById("module-menu");
+moduleMenu.style.display = "none";
+const moduleUpdateButton = document.getElementById("module-update-button");
+const moduleDeleteButton = document.getElementById("module-delete-button");
 
-const updateButton = document.getElementById("update-button");
-const deleteButton = document.getElementById("delete-button");
+const teacherMenu = document.getElementById("teacher-menu");
+teacherMenu.style.display = "none";
+const teacherUpdateButton = document.getElementById("teacher-update-button");
+const teacherDeleteButton = document.getElementById("teacher-delete-button");
 
 const teacherList = document.getElementById("teacher-list");
 const listGroup = document.getElementById("list-group");
@@ -54,14 +58,14 @@ function getTeachers() {
             
             listElement.oncontextmenu = (function (event) {
                 event.preventDefault();
-                menu.style.display = "block";
-                updateButton.value = teacher.id;
-                deleteButton.value = teacher.id;
+                teacherMenu.style.display = "block";
+                teacherUpdateButton.value = teacher.id;
+                teacherDeleteButton.value = teacher.id;
             });
             
             window.onclick = function(event) {
-                if (event.target == menu) {
-                    menu.style.display = "none";
+                if (event.target == teacherMenu) {
+                    teacherMenu.style.display = "none";
                 }
             }
         
@@ -97,17 +101,6 @@ function getModules(listText) {
                     const optionElement = document.createElement("option");
                     optionElement.value = "lecture-page.html?id=" + m.id;  
                     optionElement.text = m.moduleCode + " " + m.moduleName;
-                    
-                    optionElement.oncontextmenu = (function (event) {
-                        event.preventDefault();
-                        menu.style.display = "block";
-                        updateButton.value = teacher.id;
-                        deleteButton.value = teacher.id;
-                    });
-                    
-                    
-                    
-                    
                     dropList.appendChild(optionElement);
                 }
             }
@@ -131,7 +124,7 @@ function updateTeacher(elementId) {
     ])
     .then(responseArr => {
         console.log(responseArr);
-        updateButton.value = "";
+        teacherUpdateButton.value = "";
         location.reload();
     });
     
@@ -142,7 +135,7 @@ function deleteTeacher(elementId) {
     axios.delete("http://localhost:8081/teacher/" + elementId)
         .then(response => {
             console.log(response);
-            deleteButton.value = "";
+            teacherDeleteButton.value = "";
             location.reload();
         });
 }

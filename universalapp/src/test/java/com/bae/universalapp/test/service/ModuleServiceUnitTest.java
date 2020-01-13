@@ -34,8 +34,6 @@ public class ModuleServiceUnitTest {
 
     private List<Module> moduleList;
 
-    // private List<Lecture> lectureList;
-
     private Module testModule;
 
     private Module testModuleWithId;
@@ -46,7 +44,6 @@ public class ModuleServiceUnitTest {
     public void init() {
 
         this.moduleList = new ArrayList<>();
-        // this.lectureList = new ArrayList<>();
         
         this.testModule = new Module("Intro to group theory", "CHEM 382");
         this.testModuleWithId = new Module("Quantum Chemistry", "CHEM 335");
@@ -88,26 +85,26 @@ public class ModuleServiceUnitTest {
 
     @Test
     public void updateModuleByIdTest() {
+        
+        Module newModule = new Module("Statistical Thermodynamics", "CHEM 336");
+        Module updatedModule = new Module(newModule.getModuleCode(), newModule.getModuleName());
+        updatedModule.setId(this.testModuleWithId.getId());
 
-        Module updatedModule = new Module("Statistical Thermodynamics", "CHEM 336");
+        when(this.moduleRepo.findById(this.testModuleWithId.getId())).thenReturn(Optional.of(this.testModuleWithId));
+        
+        when(this.moduleRepo.save(this.testModuleWithId)).thenReturn(updatedModule);
 
-        when(this.moduleRepo.findById(id)).thenReturn(Optional.of(testModuleWithId));
+        assertEquals(updatedModule, this.moduleService.updateModuleById(newModule, this.testModuleWithId.getId()));
 
-        assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
-
-        when(this.moduleRepo.save(updatedModule)).thenReturn(updatedModule);
-
-        assertEquals(updatedModule, this.moduleService.updateModuleById(updatedModule, id));
-
-        verify(this.moduleRepo, times(2)).findById(id);
-        verify(this.moduleRepo, times(1)).save(updatedModule);
+        verify(this.moduleRepo, times(1)).findById(this.testModuleWithId.getId());
+        verify(this.moduleRepo, times(1)).save(this.testModuleWithId);
 
     }
 
     @Test
     public void updateLecturesByModuleIdTest() {
 
-        Module toUpdate = new Module("Statistical Thermodynamics", "CHEM 336");
+        Module toUpdate = new Module("Quantum Mechanics", "CHEM 335");
         Lecture lectureOne = new Lecture("lecture 1");
         Lecture lectureTwo = new Lecture("lecture 2");
         
@@ -115,13 +112,13 @@ public class ModuleServiceUnitTest {
         lectureList.add(lectureOne);
         lectureList.add(lectureTwo);
 
-        when(this.moduleRepo.findById(id)).thenReturn(Optional.of(testModuleWithId));
+        when(this.moduleRepo.findById(id)).thenReturn(Optional.of(this.testModuleWithId));
 
         assertEquals(testModuleWithId, this.moduleService.getModuleById(id));
 
-        when(this.moduleRepo.save(toUpdate)).thenReturn(toUpdate);
+        when(this.moduleRepo.save(toUpdate)).thenReturn(testModuleWithId);
 
-        assertEquals(testModuleWithId.toString(), this.moduleService.updateLecturesByModuleId(id, lectureList));
+        assertEquals(this.testModuleWithId, this.moduleService.updateLecturesByModuleId(this.id, lectureList));
 
         verify(this.moduleRepo, times(2)).findById(id);
         verify(this.moduleRepo, times(1)).save(toUpdate);
