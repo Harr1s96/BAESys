@@ -14,7 +14,7 @@ const teacherData = axios.get("http://localhost:8081/teachers")
     .then(response => {console.log(response.data); 
                     return response.data;});
 
-function postData() {
+function postTeacher() {
 
     let str = document.getElementById("lecturer").value;
     let lecturerNameArray = str.split(" ");
@@ -22,15 +22,16 @@ function postData() {
     let moduleName = document.getElementById("moduleName").value;
     let moduleCode = document.getElementById("moduleCode").value;
 
-    const toPost = {"firstName":lecturerNameArray[0],
-            "lastName":lecturerNameArray[1],
-            "modules":[{"moduleName": moduleName, "moduleCode": moduleCode}]}
+    const toPost = {
+        "firstName":lecturerNameArray[0],
+        "lastName":lecturerNameArray[1],
+        "modules":[{"moduleName": moduleName, "moduleCode": moduleCode}]}
 
     axios.post("http://localhost:8081/teacher", toPost)
         .then(response => {console.log(response); location.reload();})
-    }
+}
 
-function showTeachers() {
+function getTeachers() {
 
     teacherData.then(data => {
         for (let teacher of data) {
@@ -91,11 +92,22 @@ function getModules(listText) {
 
     for (let i = 0; i < listElems.length; i++) {    
         teacherData.then(data => {
-            if ((data[i].firstName + " " + data[i].lastName) == listText) {
+            if ((data[i].firstName + " " + data[i].lastName) === listText) {
                 for (let m of data[i].modules) {  
                     const optionElement = document.createElement("option");
-                    optionElement.value = "lecture-page.html?id=" + data[i].id;  
-                    optionElement.text = m.moduleCode + " " + m.moduleName; 
+                    optionElement.value = "lecture-page.html?id=" + m.id;  
+                    optionElement.text = m.moduleCode + " " + m.moduleName;
+                    
+                    optionElement.oncontextmenu = (function (event) {
+                        event.preventDefault();
+                        menu.style.display = "block";
+                        updateButton.value = teacher.id;
+                        deleteButton.value = teacher.id;
+                    });
+                    
+                    
+                    
+                    
                     dropList.appendChild(optionElement);
                 }
             }
@@ -105,16 +117,24 @@ function getModules(listText) {
 
 function updateTeacher(elementId) {
 
+    const addedModuleCode = document.getElementById("update-module-code").value;
+    const addedModuleName = document.getElementById("update-module-name").value;
     const toUpdate = document.getElementById("update-teacher").value;
-    let lecturerNameArray = toUpdate.split(" ");
     
+    let lecturerNameArray = toUpdate.split(" ");
     const data = {"firstName": lecturerNameArray[0], "lastName": lecturerNameArray[1]}
-    axios.put("http://localhost:8081/teacher?id=" + elementId, data)
-        .then(response => {
-            console.log(response);
-            updateButton.value = ""; 
-            location.reload();
-        });
+
+    axios.all([
+        axios.put("http://localhost:8081/teacher?id=" + elementId, data),
+        axios.put("http://localhost:8081/teacher/" + elementId,
+            [{"moduleCode": addedModuleCode, "moduleName": addedModuleName}])
+    ])
+    .then(responseArr => {
+        console.log(responseArr);
+        updateButton.value = "";
+        location.reload();
+    });
+    
 }
 
 function deleteTeacher(elementId) {

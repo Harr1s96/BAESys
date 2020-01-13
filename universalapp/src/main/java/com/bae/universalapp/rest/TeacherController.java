@@ -51,6 +51,11 @@ public class TeacherController {
 
 	}
 
+	@PutMapping("/teacher/{teacherId}")
+	public Teacher updateModulesByTeacherId(@PathVariable(value = "teacherId") Long id, @RequestBody List<Module> moduleList) {
+		return this.service.updateModulesByTeacherId(id, moduleList);
+	}
+
 	@DeleteMapping("/teacher/{teacherId}")
 	public String deleteTeacherById(@PathVariable(value ="teacherId") Long id) {
 		return this.service.deleteTeacherById(id);

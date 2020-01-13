@@ -34,8 +34,9 @@
       font-size: xx-large;
     }
     
-    #modal-body #update-teacher {
+    #modal-body .update-teacher {
       width: 300px;
+      margin-bottom: 10px;
     }
     .active {
     background-color: cadetblue !important;
@@ -45,7 +46,7 @@
 
 </head>
 
-<body onload="showTeachers();">
+<body onload="getTeachers();">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
     
@@ -72,6 +73,7 @@
     
   </nav>
 
+  <!-- Modal pop-up for Lecturers -->
   <div id="menu" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -79,7 +81,9 @@
           <h4 class="modal-title">Would you like to update or delete?</h4>
         </div>
         <div id="modal-body" class="modal-body">
-          <input type="text" id="update-teacher" placeholder="Enter Teacher Name">
+          <input type="text" id="update-teacher" class="update-teacher" placeholder="Enter Teacher Name">
+          <input type="text" id="update-module-code" class="update-teacher" placeholder="Enter Module Code">
+          <input type="text" id="update-module-name" class="update-teacher" placeholder="Enter Module Name">
         </div>
         <div class="modal-footer">
           <button id="update-button" type="button" class="btn btn-success" onclick="updateTeacher(this.value);">Update</button>
@@ -89,6 +93,25 @@
     </div>
   </div>
 
+  <!-- Modal pop-up for Modules -->
+  <!-- <div id="module-menu" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Would you like to update or delete?</h4>
+        </div>
+        <div id="modal-body" class="modal-body">
+          <input type="text" id="module-code" class="update-teacher" placeholder="Enter Lecture">
+          <input type="text" id="module-name" class="update-teacher" placeholder="Enter Lecture">
+        </div>
+        <div class="modal-footer">
+          <button id="module-update-button" type="button" class="btn btn-success" onclick="updateModule(this.value);">Update</button>
+          <button id="module-delete-button" type="button" class="btn btn-danger" onclick="deleteModule(this.value);">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
   <div id="input-field">
     
       <input type="text" id="lecturer" placeholder="Enter Lecturer Name">
@@ -97,7 +120,7 @@
 
       <input type="text" id="moduleCode" placeholder="Enter Module Code">
       
-      <button id="submit" onclick="postData();">Submit</button>
+      <button id="submit" onclick="postTeacher();">Submit</button>
   
   </div>
 
