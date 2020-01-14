@@ -52,35 +52,35 @@ public class Lecture {
         return lectureName;
     }
 
-	@Override
-	public boolean equals(Object obj) {
+	// @Override
+	// public boolean equals(Object obj) {
         
-        if (this == obj)
-			return true;
+    //     if (this == obj)
+	// 		return true;
         
-        if (obj == null)
-			return false;
+    //     if (obj == null)
+	// 		return false;
         
-        if (getClass() != obj.getClass())
-			return false;
+    //     if (getClass() != obj.getClass())
+	// 		return false;
         
-        Lecture other = (Lecture) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-        } 
-        else if (!id.equals(other.id))
-			return false;
+    //     Lecture other = (Lecture) obj;
+	// 	if (id == null) {
+	// 		if (other.id != null)
+	// 			return false;
+    //     } 
+    //     else if (!id.equals(other.id))
+	// 		return false;
         
-        if (lectureName == null) {
-			if (other.lectureName != null)
-				return false;
-        } 
-        else if (!lectureName.equals(other.lectureName))
-			return false;
+    //     if (lectureName == null) {
+	// 		if (other.lectureName != null)
+	// 			return false;
+    //     } 
+    //     else if (!lectureName.equals(other.lectureName))
+	// 		return false;
         
-        return true;
-    }
+    //     return true;
+    // }
     
     @Override
     public String toString() {
@@ -88,18 +88,18 @@ public class Lecture {
     }
     
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        
-//        if (this == obj) {
-//            return true;
-//        }
-//        if (Objects.isNull(obj)) {
-//            return false;
-//        }
-//        if (this.getClass() == obj.getClass()) {
-//            return true;
-//        }
-//        return super.equals(obj);
-//    }
+   @Override
+   public boolean equals(Object obj) {
+       
+       if (this == obj) {
+           return true;
+       }
+       if (obj == null) {
+           return false;
+       }
+       if (this.getClass() == obj.getClass()) {
+           return true;
+       }
+       return super.equals(obj);
+   }
 }
