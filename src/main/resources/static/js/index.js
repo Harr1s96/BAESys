@@ -14,7 +14,7 @@ const teacherList = document.getElementById("teacher-list");
 const listGroup = document.getElementById("list-group");
 const mainDiv = document.getElementById("list-div");
 
-const teacherData = axios.get("http://localhost:8081/teachers")
+const teacherData = axios.get("/UniversalApp/teachers")
     .then(response => {console.log(response.data); 
                     return response.data;});
 
@@ -31,7 +31,7 @@ function postTeacher() {
         "lastName":lecturerNameArray[1],
         "modules":[{"moduleName": moduleName, "moduleCode": moduleCode}]}
 
-    axios.post("http://localhost:8081/teacher", toPost)
+    axios.post("UniversalApp/teacher", toPost)
         .then(response => {console.log(response); location.reload();})
 }
 
@@ -99,7 +99,7 @@ function getModules(listText) {
             if ((data[i].firstName + " " + data[i].lastName) === listText) {
                 for (let m of data[i].modules) {  
                     const optionElement = document.createElement("option");
-                    optionElement.value = "lecture-page.html?id=" + m.id;  
+                    optionElement.value = "UniversalApp/lecture-page.html?id=" + m.id;  
                     optionElement.text = m.moduleCode + " " + m.moduleName;
                     dropList.appendChild(optionElement);
                 }
@@ -118,8 +118,8 @@ function updateTeacher(elementId) {
     const data = {"firstName": lecturerNameArray[0], "lastName": lecturerNameArray[1]}
 
     axios.all([
-        axios.put("http://localhost:8081/teacher?id=" + elementId, data),
-        axios.put("http://localhost:8081/teacher/" + elementId,
+        axios.put("UniversalApp/teacher?id=" + elementId, data),
+        axios.put("UniversalApp/teacher/" + elementId,
             [{"moduleCode": addedModuleCode, "moduleName": addedModuleName}])
     ])
     .then(responseArr => {
@@ -132,7 +132,7 @@ function updateTeacher(elementId) {
 
 function deleteTeacher(elementId) {
 
-    axios.delete("http://localhost:8081/teacher/" + elementId)
+    axios.delete("UniversalApp/teacher/" + elementId)
         .then(response => {
             console.log(response);
             teacherDeleteButton.value = "";
