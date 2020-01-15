@@ -9,10 +9,10 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 * Status
 
 ## Features
-* _Create_ - Users are able to create lecturer records with their corresponding taught modules and the lectures within them.
-* _Read_ - Created recordings are automatically displayed on the webpage.
-* _Update_ - Users can update created recordings via a right-click context menu.
-* _Delete_ - All created records can be deleted via the context menu.
+* **Create** - Users are able to create lecturer records with their corresponding taught modules and lectures.
+* **Read** - Created recordings are automatically displayed on the webpage.
+* **Update** - Users can update created recordings via a right-click context menu.
+* **Delete** - All created records can be deleted via the context menu.
 
 ### Browser Support
 ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) 
