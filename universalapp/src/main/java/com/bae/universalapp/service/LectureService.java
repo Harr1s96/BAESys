@@ -53,17 +53,17 @@ public class LectureService {
         return "Lecture deleted successfully";
     }
 
-    public String deleteAllLectures() {
+    // public String deleteAllLectures() {
         
-        this.lectureRepo.deleteLectureTable();
-        this.lectureRepo.flush();
+    //     this.lectureRepo.deleteLectureTable();
+    //     this.lectureRepo.flush();
 
-        boolean entityCheck = this.lectureRepo.findAll().isEmpty();
+    //     boolean entityCheck = this.lectureRepo.findAll().isEmpty();
 
-        if (entityCheck) {
-            return "Lecture table is not empty";
-        }
-        return "Lecture table has been emptied successfully";
-    }
+    //     if (entityCheck) {
+    //         return "Lecture table is not empty";
+    //     }
+    //     return "Lecture table has been emptied successfully";
+    // }
 
 }

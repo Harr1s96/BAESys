@@ -1,11 +1,13 @@
 package com.bae.universalapp.test.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,14 +108,15 @@ public class TeacherServiceUnitTest {
     public void deleteTeacherByIdTest() {
         
         when(this.teacherRepo.existsById(id))
-        .thenReturn(true);
+        .thenReturn(true, false);
 
         assertEquals("Teacher has not been deleted", this.teacherService.deleteTeacherById(id));
+        assertEquals("Teacher deleted successfully", this.teacherService.deleteTeacherById(id));
 
-        verify(this.teacherRepo, times(1)).existsById(id);
-        verify(this.teacherRepo, times(1)).deleteById(id);
+        verify(this.teacherRepo, times(2)).existsById(id);
+        verify(this.teacherRepo, times(2)).deleteById(id);
 
-    } 
+    }
 
 
 }

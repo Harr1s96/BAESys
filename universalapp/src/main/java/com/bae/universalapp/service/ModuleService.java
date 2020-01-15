@@ -67,18 +67,18 @@ public class ModuleService {
 
     }
 
-    public String deleteAllModules() {
+    // public String deleteAllModules() {
 
-        this.moduleRepo.deleteModuleTable();
-        this.moduleRepo.flush();
+    //     this.moduleRepo.deleteModuleTable();
+    //     this.moduleRepo.flush();
 
-        boolean entityCheck = this.moduleRepo.findAll().isEmpty();
+    //     boolean entityCheck = this.moduleRepo.findAll().isEmpty();
 
-        if (entityCheck) {
-            return "Module table is not empty";
-        }
-        return "Module table has been emptied successfully";
-    }
+    //     if (entityCheck) {
+    //         return "Module table is not empty";
+    //     }
+    //     return "Module table has been emptied successfully";
+    // }
 
     public boolean verifyModuleCode(List<Module> moduleList) throws EmptyModuleListException {
 

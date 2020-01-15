@@ -128,12 +128,13 @@ public class ModuleServiceUnitTest {
     @Test
     public void deleteModuleByIdTest() {
 
-        when(this.moduleRepo.existsById(id)).thenReturn(true);
+        when(this.moduleRepo.existsById(id)).thenReturn(true, false);
 
         assertEquals("Module has not been deleted", this.moduleService.deleteModuleById(id));
+        assertEquals("Module deleted successfully", this.moduleService.deleteModuleById(id));
 
-        verify(this.moduleRepo, times(1)).existsById(id);
-        verify(this.moduleRepo, times(1)).deleteById(id);
+        verify(this.moduleRepo, times(2)).existsById(id);
+        verify(this.moduleRepo, times(2)).deleteById(id);
 
     }
 

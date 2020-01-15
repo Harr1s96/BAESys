@@ -67,18 +67,18 @@ public class TeacherService {
 
     }
 
-    public String deleteAllTeachers() {
+    // public String deleteAllTeachers() {
 
-        for (Teacher teacher : this.teacherRepo.findAll()) {
-            this.teacherRepo.delete(teacher);
-        }
+    //     for (Teacher teacher : this.teacherRepo.findAll()) {
+    //         this.teacherRepo.delete(teacher);
+    //     }
 
-        boolean entityCheck = this.teacherRepo.findAll().isEmpty();
+    //     boolean entityCheck = this.teacherRepo.findAll().isEmpty();
 
-        if (entityCheck) {
-            return "Teacher table is not empty";
-        }
-        return "Teacher table has been emptied successfully";
-    }
+    //     if (entityCheck) {
+    //         return "Teacher table is not empty";
+    //     }
+    //     return "Teacher table has been emptied successfully";
+    // }
 
 }
