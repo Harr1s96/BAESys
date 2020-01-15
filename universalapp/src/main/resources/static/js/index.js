@@ -1,12 +1,8 @@
 "use strict";
 
-const moduleMenu = document.getElementById("module-menu");
-moduleMenu.style.display = "none";
-const moduleUpdateButton = document.getElementById("module-update-button");
-const moduleDeleteButton = document.getElementById("module-delete-button");
-
 const teacherMenu = document.getElementById("teacher-menu");
 teacherMenu.style.display = "none";
+
 const teacherUpdateButton = document.getElementById("teacher-update-button");
 const teacherDeleteButton = document.getElementById("teacher-delete-button");
 
@@ -32,7 +28,15 @@ function postTeacher() {
         "modules":[{"moduleName": moduleName, "moduleCode": moduleCode}]}
 
     axios.post("http://localhost:8081/teacher", toPost)
-        .then(response => {console.log(response); location.reload();})
+        .then(response => {console.log(response); 
+            location.reload();
+        })
+        .catch(error => {
+            if (error.response.status === 400) {
+                alert("Please Enter a CHEM XXX Module");
+                location.reload();
+            }
+        });
 }
 
 function getTeachers() {
