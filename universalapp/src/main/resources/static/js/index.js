@@ -52,7 +52,6 @@ function getTeachers() {
                 let clickedElement = document.querySelector(".active");
                 
                 if (clickedElement) {
-                    
                     clickedElement.classList.remove("active");
                 }
                 
