@@ -21,7 +21,7 @@ Latest ✔ | Latest ✔
 
 ## Technologies
 
-* RESTful API - Java SpringBoot 2.0.0
+* RESTful API - Java SpringBoot 2.2.2
 * Database - embedded H2 SQL database
 * Front-end - HTML5/JavaScript
 * Apache Tomcat 8.5.5
