@@ -7,7 +7,9 @@ import com.bae.universalapp.test.selenium.pages.Home;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -15,6 +17,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * TestApp
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainPageTest {
 
     private WebDriver chromeDriver;
@@ -26,8 +29,9 @@ public class MainPageTest {
         chromeDriver = new ChromeDriver();
     }
 
+    // Testing create method and page navigation
     @Test
-    public void mainPageNavigationTest() throws InterruptedException {
+    public void secondMethod() throws InterruptedException {
         chromeDriver.get("http://3.11.133.109:8181/UniversalApp/");
         
         Home homePage = PageFactory.initElements(chromeDriver, Home.class);
@@ -40,8 +44,9 @@ public class MainPageTest {
         assertEquals("http://3.11.133.109:8181/UniversalApp/lecture-page.html?id=1", this.chromeDriver.getCurrentUrl());
     }
 
+    // Testing update method
     @Test
-    public void mainPageUpdateTest() throws InterruptedException {
+    public void firstMethod() throws InterruptedException {
         
         chromeDriver.get("http://3.11.133.109:8181/UniversalApp");
 
@@ -53,14 +58,18 @@ public class MainPageTest {
         homePage.updateTeacher("Jess Layton", "CHEM 101", "Introduction to Organic Chemistry");
     }
 
-    public void mainPageDeleteTest() throws InterruptedException {
+    // Testing delete method
+    @Test
+    public void thirdMethod() throws InterruptedException {
 
-        
+        chromeDriver.get("http://3.11.133.109:8181/UniversalApp");
 
+        Home homePage = PageFactory.initElements(chromeDriver, Home.class);
+        homePage.getContextMenu(chromeDriver);
+        Thread.sleep(2000);
+        homePage.deleteTeacher();
     }
 
-
-    
     @After
 	public void cleanUp() {
         
