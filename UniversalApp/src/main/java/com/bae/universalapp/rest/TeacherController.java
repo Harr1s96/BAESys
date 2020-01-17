@@ -31,7 +31,6 @@ public class TeacherController {
 		List<Module> theList = teacher.getModules();
 		this.moduleService.verifyModuleCode(theList);
 		return this.service.addTeacher(teacher);
-
 	}
 
 	@GetMapping("/teachers")
@@ -60,10 +59,5 @@ public class TeacherController {
 	public String deleteTeacherById(@PathVariable(value ="teacherId") Long id) {
 		return this.service.deleteTeacherById(id);
 	}
-
-	// @DeleteMapping("/deleteAllTeachers")
-	// public String deleteAllTeachers() {
-	// 	return this.service.deleteAllTeachers();
-	// }
 
 }
