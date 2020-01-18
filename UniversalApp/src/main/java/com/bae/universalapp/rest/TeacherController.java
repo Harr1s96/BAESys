@@ -61,9 +61,4 @@ public class TeacherController {
 		return this.service.deleteTeacherById(id);
 	}
 
-	// @DeleteMapping("/deleteAllTeachers")
-	// public String deleteAllTeachers() {
-	// 	return this.service.deleteAllTeachers();
-	// }
-
 }
