@@ -8,7 +8,7 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 * [Usage] (#Usage)
 * [Status] (#Status)
 
-<a>#Features</a>
+<a name="Features"></a>
 ## Features
 * **Create** - Users are able to create lecturer records with their corresponding taught modules and lectures.
 * **Read** - Created recordings are automatically displayed on the webpage.
