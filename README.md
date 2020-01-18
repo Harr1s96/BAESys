@@ -18,10 +18,10 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 <a name="Technologies"></a>
 ## Technologies
 
-* **RESTful API**: ![SpringBoot Logo](https://github.com/jelastic-jps/spring-boot/blob/master/images/spring-boot-logo.png)
-* Database - embedded H2 SQL database
-* Front-end - HTML5/JavaScript
-* Build Tool - Apache Maven 3.6.3
+* **RESTful API**: Java SpringBoot 2.2.2
+* **Database** - embedded H2 SQL database
+* **Front-end** - HTML5/JavaScript
+* **Build Tool** - Apache Maven 3.6.3
 * Apache Tomcat 8.5.5
 
 ### Browser Support
@@ -36,6 +36,10 @@ Latest ✔ | Latest ✔ |
 To Access the App Navigate to the address:
 
 `http://3.11.133.109:8181/UniversalApp/`
+
+Only CHEM XXX modules are supported at the moment, entering other modules will throw a
+
+`HTTP 400 Bad Request`
 
 ![UniversalApp Usage Demo](project-demo.gif)
 
