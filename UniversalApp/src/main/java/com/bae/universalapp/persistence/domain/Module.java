@@ -107,5 +107,10 @@ public class Module {
     public String toString() {
         return "Module [id=" + this.id + ", moduleCode=" + this.moduleCode + ", moduleName=" + this.moduleName + ", lectures=" + this.lectures + "]";
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
     
 }

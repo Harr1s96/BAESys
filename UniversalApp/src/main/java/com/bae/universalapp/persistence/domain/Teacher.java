@@ -98,4 +98,9 @@ public class Teacher {
        }
        return super.equals(obj);
    }
+
+   @Override
+   public int hashCode() {
+       return super.hashCode();
+   }
 }
