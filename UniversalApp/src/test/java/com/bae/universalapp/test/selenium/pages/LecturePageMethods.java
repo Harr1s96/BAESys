@@ -13,7 +13,7 @@ public class LecturePageMethods {
 
     public void submitLectureDetails(String lectureName) {
 
-        elements.lectureInputField.sendKeys("Lecture 1");
+        elements.lectureInputField.sendKeys(lectureName);
         elements.lectureSubmitButton.click();
     }
 
