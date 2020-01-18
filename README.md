@@ -33,6 +33,12 @@ Latest ✔ | Latest ✔ |
 <a name="Usage"></a>
 ## Usage
 
+To Access the App Navigate to the address:
+`http://3.11.133.109:8181/UniversalApp/`
+
+The UI and page navigation is show below.
+
+
 ![UniversalApp Usage Demo](project-demo.gif)
 
 
