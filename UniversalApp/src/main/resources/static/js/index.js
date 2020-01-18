@@ -102,7 +102,8 @@ function getModules(listText) {
             if ((data[i].firstName + " " + data[i].lastName) === listText) {
                 for (let m of data[i].modules) {  
                     const optionElement = document.createElement("option");
-                    optionElement.value = "lecture-page.html?id=" + m.id;  
+                    optionElement.value = "lecture-page.html?id=" + m.id;
+                    optionElement.className = "options";  
                     optionElement.text = m.moduleCode + " " + m.moduleName;
                     dropList.appendChild(optionElement);
                 }

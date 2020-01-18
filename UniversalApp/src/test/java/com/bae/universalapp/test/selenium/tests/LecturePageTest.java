@@ -1,7 +1,5 @@
 package com.bae.universalapp.test.selenium.tests;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -43,7 +41,7 @@ public class LecturePageTest {
         System.setProperty(Constants.PROPERTY, Constants.PATH);
         chromeDriver = new ChromeDriver();
         ChromeOptions opts = new ChromeOptions();
-        opts.setHeadless(true);
+        //opts.setHeadless(true);
         
         chromeDriver = new ChromeDriver(opts);
 		lecturePage = PageFactory.initElements(chromeDriver, LecturePage.class);
@@ -53,35 +51,44 @@ public class LecturePageTest {
 
     // Testing post and get lecture functionality
     @Test
-    public void firstMethod() throws InterruptedException {
+    public void postAndGetTest() throws InterruptedException {
 
         chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp/"); 
         HomePage homePage = PageFactory.initElements(chromeDriver, HomePage.class);
         
         homePage.submitDetails("James Kiesslinger", "Introduction to Thermodynamics", "CHEM 390");
-        Thread.sleep(2000);
-        homePage.proceedtoModules();
-        Thread.sleep(2000);
+        homePage.proceedtoModules(chromeDriver);
         homePage.proceedToLectures();
         lecturePage.submitLectureDetails("lecture 1");
-
-        assertEquals(true, lecturePage.getLectureListElement().isDisplayed());
     }
 
     // Testing update functionality
     @Test
-    public void secondMethod() throws InterruptedException {
+    public void updateTest() {
 
-        chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp/lecture-page.html");
+        chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp/");
+        HomePage homePage = PageFactory.initElements(chromeDriver, HomePage.class);
+ 
+        homePage.submitDetails("James Kiesslinger", "Introduction to Thermodynamics", "CHEM 390");
+        homePage.proceedtoModules(chromeDriver);
+        homePage.proceedToLectures();
+     
         lecturePage.getContextMenu(chromeDriver);
         lecturePage.updateLecture("updated lecture");
     }
 
     // Testing delete functionality
     @Test
-    public void thirdMethod() {
+    public void deleteMethod() {
 
-        chromeDriver.get("http://" + ADDRESS + ":" + port +  "/UniversalApp/lecture-page.html");
+        chromeDriver.get("http://" + ADDRESS + ":" + port +  "/UniversalApp/");
+        HomePage homePage = PageFactory.initElements(chromeDriver, HomePage.class);
+ 
+        homePage.submitDetails("James Kiesslinger", "Introduction to Thermodynamics", "CHEM 390");
+        homePage.proceedtoModules(chromeDriver);
+        homePage.proceedToLectures();
+        
+        lecturePage.submitLectureDetails("lecture 1");    
         lecturePage.getContextMenu(chromeDriver);
         lecturePage.deleteLecture();
     }

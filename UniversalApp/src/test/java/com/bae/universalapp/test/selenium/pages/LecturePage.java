@@ -18,9 +18,6 @@ public class LecturePage {
     @FindBy(xpath = "//*[@id='submit']")
     public WebElement lectureSubmitButton;
 
-    @FindBy(xpath = "/html/body/div[3]/ul/li")
-    public WebElement lectureListElement;
-
     @FindBy(xpath = "//*[@id='update-lecture']")
     public WebElement updateLectureInputField;
 
@@ -29,12 +26,6 @@ public class LecturePage {
 
     @FindBy(xpath = "//*[@id='delete-button']")
     public WebElement deleteLectureButton;
-
-    private WebDriver driver;
-    
-    public LecturePage(WebDriver driver) {
-        this.driver = driver;
-    }
     
     /**
      * @return the deleteLectureButton
@@ -53,8 +44,8 @@ public class LecturePage {
     /**
      * @return the lectureListElement
      */
-    public WebElement getLectureListElement() {
-        return this.driver.findElement(By.xpath("/html/body/div[3]/ul/li"));
+    public WebElement getLectureListElement(WebDriver driver) {
+        return driver.findElement(By.xpath("/html/body/div[3]/ul/li"));
     }
 
     /**
@@ -86,24 +77,10 @@ public class LecturePage {
     }
 
     /**
-     * @param driver the driver to set
-     */
-    public void setDriver(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    /**
      * @param lectureInputField the lectureInputField to set
      */
     public void setLectureInputField(WebElement lectureInputField) {
         this.lectureInputField = lectureInputField;
-    }
-
-    /**
-     * @param lectureListElement the lectureListElement to set
-     */
-    public void setLectureListElement(WebElement lectureListElement) {
-        this.lectureListElement = lectureListElement;
     }
 
     public void submitLectureDetails(String lectureName) {
@@ -115,13 +92,12 @@ public class LecturePage {
     public void getContextMenu(WebDriver driver) {
 
         Actions actions = new Actions(driver);
-        actions.contextClick(getLectureListElement()).perform();
+        actions.contextClick(getLectureListElement(driver)).perform();
     }
 
-    public void updateLecture(String lectureName) throws InterruptedException {
+    public void updateLecture(String lectureName) {
         
         updateLectureInputField.sendKeys(lectureName);
-        Thread.sleep(2000);
         updateLectureButton.click(); 
     }
 

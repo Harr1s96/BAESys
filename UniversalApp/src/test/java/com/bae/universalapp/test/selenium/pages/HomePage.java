@@ -26,7 +26,7 @@ public class HomePage {
 	@FindBy(xpath = "//select[@id='dropdown']")
 	private WebElement moduleDropDownList;
 
-	@FindBy(xpath = "/html/body/div[5]/select/option[2]")
+	@FindBy(className = "options")
 	private WebElement optionElement;
 
 	@FindBy(xpath = "//*[@id='teacher-update-button']")
@@ -43,13 +43,6 @@ public class HomePage {
 
 	@FindBy(xpath = "//*[@id='update-module-name']")
 	private WebElement updateModuleNameInputField;
-
-	private WebDriver driver;
-
-	public HomePage(WebDriver driver) {
-		super();
-		this.driver = driver;
-	}
 
 	public WebElement getTeacherInputField() {
 		return teacherInputField;
@@ -91,6 +84,9 @@ public class HomePage {
 		this.moduleDropDownList = moduleDropDownList;
 	}
 
+	/**
+	 * @return the optionElement
+	 */
 	public WebElement getOptionElement() {
 		return optionElement;
 	}
@@ -139,33 +135,29 @@ public class HomePage {
 		this.updateModuleNameInputField = updateModuleNameInputField;
 	}
 
-	public void submitDetails(String teacherName, String moduleName, String moduleCode) throws InterruptedException {
+	public void submitDetails(String teacherName, String moduleName, String moduleCode)  {
 
 		teacherInputField.sendKeys(teacherName);
-		Thread.sleep(2000);
 		moduleNameInputField.sendKeys(moduleName);
-		Thread.sleep(2000);
 		moduleCodeInputField.sendKeys(moduleCode);
-		Thread.sleep(2000);
 		submitButton.click();
 	}
 
-	public void proceedtoModules() {
+	public void proceedtoModules(WebDriver driver) {
 
-		getTeacherListElement().click();
+		getTeacherListElement(driver).click();
 	}
 
-	public void proceedToLectures() throws InterruptedException {
+	public void proceedToLectures() {
 
 		moduleDropDownList.click();
-		Thread.sleep(2000);
 		optionElement.click();
 	}
 
 	public void getContextMenu(WebDriver driver) {
 
 		Actions actions = new Actions(driver);
-		actions.contextClick(getTeacherListElement()).perform();
+		actions.contextClick(getTeacherListElement(driver)).perform();
 	}
 
 	public void deleteTeacher() {
@@ -173,19 +165,16 @@ public class HomePage {
 		deleteTeacherButton.click();
 	}
 
-	public void updateTeacher(String teacherName, String moduleCode, String moduleName) throws InterruptedException {
+	public void updateTeacher(String teacherName, String moduleCode, String moduleName) {
 
 		updateTeacherInputField.sendKeys(teacherName);
-		Thread.sleep(2000);
 		updateModuleCodeInputField.sendKeys(moduleCode);
-		Thread.sleep(2000);
 		updateModuleNameInputField.sendKeys(moduleName);
-		Thread.sleep(2000);
 		updateTeacherButton.click();
 	}
 
-	public WebElement getTeacherListElement() {
-		return this.driver.findElement(By.xpath(".list-group-item"));
+	public WebElement getTeacherListElement(WebDriver driver) {
+		return driver.findElement(By.xpath("/html/body/div[3]/ul/li"));
 	}
 
 }

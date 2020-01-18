@@ -25,11 +25,10 @@ import com.bae.universalapp.test.selenium.pages.HomePage;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class MainPageTest {
+public class HomePageTest {
 
 	private WebDriver chromeDriver;
 
-	// "3.11.133.109";
 	private final String ADDRESS = "localhost";
 
 	private HomePage homePage;
@@ -42,46 +41,41 @@ public class MainPageTest {
 
 		System.setProperty(Constants.PROPERTY, Constants.PATH);
 		ChromeOptions opts = new ChromeOptions();
-		opts.setHeadless(true);
+		// opts.setHeadless(true);
 		
 		chromeDriver = new ChromeDriver(opts);
 		homePage = PageFactory.initElements(chromeDriver, HomePage.class);
 		chromeDriver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
 	}
 
-	// Testing create method and page navigation
 	@Test
-	public void secondMethod() throws InterruptedException {
+	public void postAndNaivgationTest() {
 
 		chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp/");
 		homePage.submitDetails("James Kiesslinger", "Introduction to Thermodynamics", "CHEM 390");
 
-		homePage.proceedtoModules();
+		homePage.proceedtoModules(chromeDriver);
 
 		homePage.proceedToLectures();
 
-		assertEquals("http://" + ADDRESS + ":" + port + "/UniversalApp/lecture-page.html?id=1",
-				this.chromeDriver.getCurrentUrl());
+		assertEquals("http://" + ADDRESS + ":" + port + "/UniversalApp/lecture-page.html?id=1", this.chromeDriver.getCurrentUrl());
 	}
 
-	// Testing update method
 	@Test
-	public void firstMethod() throws InterruptedException {
+	public void updateTest() {
 
 		chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp");
 		homePage.submitDetails("James Kiesslinger", "Introduction to Data Analysis", "CHEM 300");
 
 		homePage.getContextMenu(chromeDriver);
-
 		homePage.updateTeacher("Jess Layton", "CHEM 101", "Introduction to Organic Chemistry");
 
-		assertEquals(true, homePage.getTeacherListElement().isDisplayed());
 	}
 
-	// Testing delete method
 	@Test
-	public void thirdMethod() throws InterruptedException {
+	public void deleteTest() {
 		chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp");
+		homePage.getContextMenu(chromeDriver);
 		homePage.deleteTeacher();
 	}
 
