@@ -26,6 +26,7 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 ### Browser Support
 ![Chrome](https://github.com/alrra/browser-logos/blob/master/src/chrome/chrome_48x48.png) | ![Firefox](https://github.com/alrra/browser-logos/blob/master/src/firefox/firefox_48x48.png) 
 --- | --- |
+Latest ✔ | Latest ✔ |
 
 
 <a name="Usage"></a>
