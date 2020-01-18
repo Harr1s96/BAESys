@@ -3,10 +3,10 @@
 A simple web app that tracks modules and lectures at university and/or colleges for personal use.
 
 ## Table of Contents
-* [Features] (#Features)
-* [Technologies] (#Technologies)
-* [Usage] (#Usage)
-* [Status] (#Status)
+* [Features](#Features)
+* [Technologies](#Technologies)
+* [Usage](#Usage)
+* [Status](#Status)
 
 <a name="Features"></a>
 ## Features
