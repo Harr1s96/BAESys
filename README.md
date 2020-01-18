@@ -18,7 +18,7 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 <a name="Technologies"></a>
 ## Technologies
 
-* **RESTful API: ![SpringBoot Logo](https://github.com/jelastic-jps/spring-boot/blob/master/images/spring-boot-logo.png)
+* **RESTful API**: ![SpringBoot Logo](https://github.com/jelastic-jps/spring-boot/blob/master/images/spring-boot-logo.png)
 * Database - embedded H2 SQL database
 * Front-end - HTML5/JavaScript
 * Build Tool - Apache Maven 3.6.3
