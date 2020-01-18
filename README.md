@@ -15,17 +15,24 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 * **Update** - Users can update created recordings via a right-click context menu.
 * **Delete** - All created records can be deleted via the context menu.
 
-### Browser Support
-![Chrome](https://github.com/alrra/browser-logos/blob/master/src/chrome/chrome_48x48.png) | ![Firefox](https://github.com/alrra/browser-logos/blob/master/src/firefox/firefox_48x48.png) 
---- | --- |
-Latest ✔ | Latest ✔ 
-
+<a name="Technologies"></a>
 ## Technologies
 
 * RESTful API - Java SpringBoot 2.2.2
 * Database - embedded H2 SQL database
 * Front-end - HTML5/JavaScript
 * Apache Tomcat 8.5.5
+
+### Browser Support
+![Chrome](https://github.com/alrra/browser-logos/blob/master/src/chrome/chrome_48x48.png) | ![Firefox](https://github.com/alrra/browser-logos/blob/master/src/firefox/firefox_48x48.png) 
+--- | --- |
+
+<a name="Usage"></a>
+## Usage
+
+
+<a name="Status"></a>
+## Status
 
 
 
