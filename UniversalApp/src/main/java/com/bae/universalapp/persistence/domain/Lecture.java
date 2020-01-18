@@ -51,43 +51,12 @@ public class Lecture {
     public String getLectureName() {
         return lectureName;
     }
-
-	// @Override
-	// public boolean equals(Object obj) {
-        
-    //     if (this == obj)
-	// 		return true;
-        
-    //     if (obj == null)
-	// 		return false;
-        
-    //     if (getClass() != obj.getClass())
-	// 		return false;
-        
-    //     Lecture other = (Lecture) obj;
-	// 	if (id == null) {
-	// 		if (other.id != null)
-	// 			return false;
-    //     } 
-    //     else if (!id.equals(other.id))
-	// 		return false;
-        
-    //     if (lectureName == null) {
-	// 		if (other.lectureName != null)
-	// 			return false;
-    //     } 
-    //     else if (!lectureName.equals(other.lectureName))
-	// 		return false;
-        
-    //     return true;
-    // }
     
     @Override
     public String toString() {
         return "Lecture [id=" + this.id + ", lectureName=" + this.lectureName + "]";
     }
     
-
    @Override
    public boolean equals(Object obj) {
        
