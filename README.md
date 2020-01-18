@@ -21,6 +21,7 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 * RESTful API - Java SpringBoot 2.2.2
 * Database - embedded H2 SQL database
 * Front-end - HTML5/JavaScript
+* Build Tool - Apache Maven 3.6.3
 * Apache Tomcat 8.5.5
 
 ### Browser Support
