@@ -18,7 +18,7 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 <a name="Technologies"></a>
 ## Technologies
 
-* RESTful API - Java SpringBoot 2.2.2
+* Inline-style: ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 * Database - embedded H2 SQL database
 * Front-end - HTML5/JavaScript
 * Build Tool - Apache Maven 3.6.3
