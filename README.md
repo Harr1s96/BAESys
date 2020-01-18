@@ -22,7 +22,7 @@ A simple web app that tracks modules and lectures at university and/or colleges 
 * **Database** - embedded H2 SQL database
 * **Front-end** - HTML5/JavaScript
 * **Build Tool** - Apache Maven 3.6.3
-* Apache Tomcat 8.5.5
+* **Server** - Apache Tomcat 8.5.5
 
 ### Browser Support
 ![Chrome](https://github.com/alrra/browser-logos/blob/master/src/chrome/chrome_48x48.png) | ![Firefox](https://github.com/alrra/browser-logos/blob/master/src/firefox/firefox_48x48.png) 
@@ -40,6 +40,7 @@ To Access the App Navigate to the address:
 Only CHEM XXX modules are supported at the moment, entering other modules will throw a
 
 `HTTP 400 Bad Request`
+
 
 ![UniversalApp Usage Demo](project-demo.gif)
 
