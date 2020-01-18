@@ -3,7 +3,8 @@ package com.bae.universalapp.test.selenium.tests;
 import static org.junit.Assert.assertEquals;
 
 import com.bae.universalapp.test.selenium.constants.Constants;
-import com.bae.universalapp.test.selenium.pages.Home;
+import com.bae.universalapp.test.selenium.pages.HomePageElements;
+import com.bae.universalapp.test.selenium.pages.HomePageMethods;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,24 +23,29 @@ public class MainPageTest {
 
     private WebDriver chromeDriver;
 
+    private HomePageElements homePageElements;
+
+    private HomePageMethods homePageMethods;
+
     @Before
     public void setup() {
         
         System.setProperty(Constants.PROPERTY, Constants.PATH);
         chromeDriver = new ChromeDriver();
+        homePageElements = PageFactory.initElements(chromeDriver, HomePageElements.class);
+        homePageMethods = new HomePageMethods();
     }
 
     // Testing create method and page navigation
     @Test
     public void secondMethod() throws InterruptedException {
-        chromeDriver.get("http://3.11.133.109:8181/UniversalApp/");
         
-        Home homePage = PageFactory.initElements(chromeDriver, Home.class);
-        homePage.submitDetails("James Kiesslinger", "Introduction to Thermodynamics", "CHEM 390");
+        chromeDriver.get("http://3.11.133.109:8181/UniversalApp/");
+        homePageMethods.submitDetails("James Kiesslinger", "Introduction to Thermodynamics", "CHEM 390");
         Thread.sleep(2000);
-        homePage.proceedtoModules();
+        homePageMethods.proceedtoModules();
         Thread.sleep(2000);
-        homePage.proceedToLectures();
+        homePageMethods.proceedToLectures();
         
         assertEquals("http://3.11.133.109:8181/UniversalApp/lecture-page.html?id=1", this.chromeDriver.getCurrentUrl());
     }
@@ -49,13 +55,13 @@ public class MainPageTest {
     public void firstMethod() throws InterruptedException {
         
         chromeDriver.get("http://3.11.133.109:8181/UniversalApp");
+        homePageMethods.submitDetails("James Kiesslinger", "Introduction to Data Analysis", "CHEM 300");
+        Thread.sleep(2000);
+        homePageMethods.getContextMenu(chromeDriver);
+        Thread.sleep(2000);
+        homePageMethods.updateTeacher("Jess Layton", "CHEM 101", "Introduction to Organic Chemistry");
 
-        Home homePage = PageFactory.initElements(chromeDriver, Home.class);
-        homePage.submitDetails("James Kiesslinger", "Introduction to Data Analysis", "CHEM 300");
-        Thread.sleep(2000);
-        homePage.getContextMenu(chromeDriver);
-        Thread.sleep(2000);
-        homePage.updateTeacher("Jess Layton", "CHEM 101", "Introduction to Organic Chemistry");
+        assertEquals(true, homePageElements.teacherListElement.isDisplayed());
     }
 
     // Testing delete method
@@ -63,11 +69,8 @@ public class MainPageTest {
     public void thirdMethod() throws InterruptedException {
 
         chromeDriver.get("http://3.11.133.109:8181/UniversalApp");
-
-        Home homePage = PageFactory.initElements(chromeDriver, Home.class);
-        homePage.getContextMenu(chromeDriver);
         Thread.sleep(2000);
-        homePage.deleteTeacher();
+        homePageMethods.deleteTeacher();
     }
 
     @After

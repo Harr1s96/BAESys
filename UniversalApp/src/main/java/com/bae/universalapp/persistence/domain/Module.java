@@ -103,53 +103,8 @@ public class Module {
        return super.equals(obj);
    }
 
-	// @Override
-	// public boolean equals(Object obj) {
-        
-    //     if (this == obj)
-	// 		return true;
-        
-    //     if (obj == null)
-	// 		return false;
-        
-    //     if (getClass() != obj.getClass())
-	// 		return false;
-        
-    //     Module other = (Module) obj;
-	// 	if (id == null) {
-	// 		if (other.id != null)
-	// 			return false;
-    //     } 
-    //     else if (!id.equals(other.id))
-	// 		return false;
-        
-    //     if (lectures == null) {
-	// 		if (other.lectures != null)
-	// 			return false;
-    //     } 
-    //     else if (!lectures.equals(other.lectures))
-	// 		return false;
-        
-    //     if (moduleCode == null) {
-	// 		if (other.moduleCode != null)
-	// 			return false;
-    //     } 
-    //     else if (!moduleCode.equals(other.moduleCode))
-	// 		return false;
-        
-    //     if (moduleName == null) {
-	// 		if (other.moduleName != null)
-	// 			return false;
-    //     } 
-    //     else if (!moduleName.equals(other.moduleName))
-	// 		return false;
-        
-    //     return true;
-	// }
-
 	@Override
     public String toString() {
         return "Module [id=" + this.id + ", moduleCode=" + this.moduleCode + ", moduleName=" + this.moduleName + ", lectures=" + this.lectures + "]";
-    }
-    
+    }    
 }
