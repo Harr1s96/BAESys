@@ -18,7 +18,7 @@ const lectureData = axios.get("/UniversalApp/teachers/modules/" + myParam)
     .then(response => {console.log(response.data); 
         return response.data;});
 
-function postData() {
+function postLectures() {
 
     let lectureName = document.getElementById("lecture").value;
 
@@ -28,7 +28,7 @@ function postData() {
         .then(response => {console.log(response); location.reload();})
 }
 
-function showLectures() {
+function getLectures() {
 
     lectureData.then(data => {
         

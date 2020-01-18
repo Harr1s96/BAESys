@@ -106,12 +106,13 @@ public class LectureServiceUnitTest {
     public void deleteLectureByIdTest() {
         
         when(this.lectureRepo.existsById(id))
-        .thenReturn(true);
+        .thenReturn(true, false);
 
         assertEquals("Lecture has not been deleted", this.lectureService.deleteLectureById(id));
+        assertEquals("Lecture deleted successfully", this.lectureService.deleteLectureById(id));
 
-        verify(this.lectureRepo, times(1)).existsById(id);
-        verify(this.lectureRepo, times(1)).deleteById(id);
+        verify(this.lectureRepo, times(2)).existsById(id);
+        verify(this.lectureRepo, times(2)).deleteById(id);
 
     } 
 }

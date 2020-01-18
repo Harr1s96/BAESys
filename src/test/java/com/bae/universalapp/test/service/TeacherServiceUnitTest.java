@@ -106,14 +106,15 @@ public class TeacherServiceUnitTest {
     public void deleteTeacherByIdTest() {
         
         when(this.teacherRepo.existsById(id))
-        .thenReturn(true);
+        .thenReturn(true, false);
 
         assertEquals("Teacher has not been deleted", this.teacherService.deleteTeacherById(id));
+        assertEquals("Teacher deleted successfully", this.teacherService.deleteTeacherById(id));
 
-        verify(this.teacherRepo, times(1)).existsById(id);
-        verify(this.teacherRepo, times(1)).deleteById(id);
+        verify(this.teacherRepo, times(2)).existsById(id);
+        verify(this.teacherRepo, times(2)).deleteById(id);
 
-    } 
+    }
 
 
 }
