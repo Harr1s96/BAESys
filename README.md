@@ -33,7 +33,7 @@ Latest ✔ | Latest ✔ |
 <a name="Usage"></a>
 ## Usage
 
-![UniversalApp Usage Demo]()
+![UniversalApp Usage Demo](project-demo.gif)
 
 
 
