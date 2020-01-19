@@ -55,8 +55,3 @@ Feel free to clone the repository and have a little tinker. All suggestions for 
 
 `git clone https://github.com/Harr1s96/BAESys.git`
 
-
-<<<<<<< HEAD
-Repository for work Project
-=======
->>>>>>> origin/dev
