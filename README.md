@@ -2,6 +2,10 @@
 
 A simple web app that tracks modules and lectures at university and/or colleges for personal use.
 
+###Author
+
+ Harris Hanley
+
 ## Table of Contents
 * [Features](#Features)
 * [Technologies](#Technologies)
@@ -48,6 +52,7 @@ Only CHEM XXX modules are supported at the moment, entering other modules will t
 <a name="Status"></a>
 ## Status
 
+* **Version** - 0.0.1-SNAPSHOT
 * **Build** - Passing ✔
 * **Test Coverage** - 89.3% ✔
 
