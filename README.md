@@ -54,9 +54,3 @@ Only CHEM XXX modules are supported at the moment, entering other modules will t
 Feel free to clone the repository and have a little tinker. All suggestions for improvements are welcome :)
 
 `git clone https://github.com/Harr1s96/BAESys.git`
-
-
-<<<<<<< HEAD
-Repository for work Project
-=======
->>>>>>> origin/dev
