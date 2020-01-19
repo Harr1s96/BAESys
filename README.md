@@ -49,7 +49,7 @@ Only CHEM XXX modules are supported at the moment, entering other modules will t
 ## Status
 
 * **Build** - Passing ✔
-* **Test Coverage** - 89.3% ✔(surefire-report.html)
+* **Test Coverage** - 89.3% ✔ [surefire-report](surefire-report.html)
 
 Feel free to clone the repository and have a little tinker. All suggestions for improvements are welcome :)
 
