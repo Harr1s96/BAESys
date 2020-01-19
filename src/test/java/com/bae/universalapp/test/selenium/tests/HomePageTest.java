@@ -41,7 +41,7 @@ public class HomePageTest {
 
 		System.setProperty(Constants.PROPERTY, Constants.PATH);
 		ChromeOptions opts = new ChromeOptions();
-		// opts.setHeadless(true);
+		opts.setHeadless(true);
 		
 		chromeDriver = new ChromeDriver(opts);
 		homePage = PageFactory.initElements(chromeDriver, HomePage.class);
