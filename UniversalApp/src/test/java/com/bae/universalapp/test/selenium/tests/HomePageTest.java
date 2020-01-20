@@ -61,16 +61,16 @@ public class HomePageTest {
 		assertEquals("http://" + ADDRESS + ":" + port + "/UniversalApp/lecture-page.html?id=1", this.chromeDriver.getCurrentUrl());
 	}
 
-	@Test
-	public void updateTest() {
+	// @Test
+	// public void updateTest() {
 
-		chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp");
-		homePage.submitDetails("James Kiesslinger", "Introduction to Data Analysis", "CHEM 300");
+	// 	chromeDriver.get("http://" + ADDRESS + ":" + port + "/UniversalApp");
+	// 	homePage.submitDetails("James Kiesslinger", "Introduction to Data Analysis", "CHEM 300");
 
-		homePage.getContextMenu(chromeDriver);
-		homePage.updateTeacher("Jess Layton", "CHEM 101", "Introduction to Organic Chemistry");
+	// 	homePage.getContextMenu(chromeDriver);
+	// 	homePage.updateTeacher("Jess Layton", "CHEM 101", "Introduction to Organic Chemistry");
 
-	}
+	// }
 
 	@Test
 	public void deleteTest() {
