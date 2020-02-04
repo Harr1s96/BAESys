@@ -52,7 +52,7 @@ pipeline {
 
                             protocol: http,
 
-                            nexusUrl: 3.11.84.155:8081,
+                            nexusUrl: 3.11.84.155:8081/repository/chrisandharris-hosted,
 
                             groupId: pom.groupId,
 
