@@ -95,7 +95,7 @@
         	<snapshotRepository>
             		<id>nexus</id>
             		<name>chrisandharris-hosted</name>
-            		<url>http://3.11.84.155:8081/chrisandharris-hosted</url>
+            		<url>http://3.11.84.155:8081/chrisandharris-hosted/</url>
         	</snapshotRepository>
     	</distributionManagement>
 
