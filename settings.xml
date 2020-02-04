@@ -4,7 +4,7 @@
       <!--This sends everything else to /public -->                    
       <id>nexus</id>                                                   
       <mirrorOf>*</mirrorOf>                                           
-      <url>http://3.11.84.155:8081/repository/chrisandharris-proxy/</url>    
+      <url>http://3.11.84.155:8081/repository/pipeline-repository-proxy/</url>    
     </mirror>                                                          
   </mirrors>                                                           
   <profiles>                                                           
@@ -37,7 +37,7 @@
   <servers>                                                            
     <server>                                                           
       <id>nexus</id>                                                   
-      <username>ch</username>                                       
+      <username>remmymartin</username>                                       
       <password>password</password>                                    
     </server>                                                          
   </servers>                                                           
