@@ -94,8 +94,8 @@
         	</repository> -->
         	<snapshotRepository>
             		<id>nexus</id>
-            		<name>pipeline-repository-hosted</name>
-            		<url>http://3.11.84.155:8081/repository/pipeline-repository-hosted/</url>
+            		<name>chrisandharris-hosted</name>
+            		<url>http://3.11.84.155:8081/chrisandharris-hosted/</url>
         	</snapshotRepository>
     	</distributionManagement>
 
