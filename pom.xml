@@ -88,7 +88,7 @@
         	</repository> -->
         	<snapshotRepository>
             		<id>nexus</id>
-            		<name>chrisandharris-hosted</name>
+            		<name>hosted</name>
             		<url>http://3.11.84.155:8081/repository/chrisandharris-hosted/</url>
         	</snapshotRepository>
     	</distributionManagement>
