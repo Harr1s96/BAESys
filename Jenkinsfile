@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+        stage()
         stage('--- package and deploy to Nexus ---') {
             steps {
                 sh "mvn clean package deploy"
