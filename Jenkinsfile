@@ -13,7 +13,7 @@ pipeline {
         }
         stage('-- deploy image to Docker Hub --') {
             steps {
-                withDockerRegistry([credentialsId: "docker-credentials"]) {
+                withDockerRegistry([credentialsId: "docker-credentials", url: ""]) {
                     sh 'docker tag back-end bigheck123/back-end'
                     sh 'docker push bigheck123/back-end'
                 }
