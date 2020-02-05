@@ -1,24 +1,22 @@
 pipeline {
     agent any
     stages {
-        stage('---clean---') {
+        stage('--- package and deploy to Nexus ---') {
             steps {
-                sh "mvn clean"
+                sh "mvn clean package deploy"
             }
         }
-        stage('--test--') {
+        stage('-- build docker image --') {
             steps {
-                sh "mvn test"
+                sh "docker build -t back-end ."
             }
         }
-        stage('--package--') {
+        stage('-- deploy image to Docker Hub --') {
             steps {
-                sh "mvn package"
-            }
-        }
-        stage('--deploy--') {
-            steps {
-                sh "mvn deploy"
+                withDockerRegistry([credentialsId: "docker-credentials"]) {
+                    sh 'docker tag back-end bigheck123/back-end'
+                    sh 'docker push bigheck123/back-end'
+                }
             }
         }
     }
